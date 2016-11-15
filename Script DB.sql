@@ -58,7 +58,6 @@ descripcion varchar(100),
 idArea int FOREIGN KEY REFERENCES Area_Trabajo(Id)
 );
 
-
 CREATE TABLE Aplica(
 IdentificacionAplicante varchar(15) FOREIGN KEY REFERENCES Persona(identificacion),
 identificacionPuesto varchar(15) FOREIGN KEY REFERENCES Puesto(identificacion),
@@ -66,12 +65,11 @@ fechaAplicacion datetime,
 PRIMARY KEY (identificacionAplicante, identificacionPuesto)
 );
 
-
 CREATE TABLE Requerimientos_Puesto(
 identificacionPuesto varchar(15) FOREIGN KEY REFERENCES Puesto(identificacion), 
 identificacionReq varchar(15) FOREIGN KEY REFERENCES Requerimiento(identificacion),
+PRIMARY KEY(identificacionPuesto, identificacionReq)
 );
-
 
 CREATE TABLE Trabaja_En(
 idenficacionPersona varchar(15)  FOREIGN KEY REFERENCES Persona(identificacion),

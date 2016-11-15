@@ -1,0 +1,613 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SIEIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Aplica">
+          <Key>
+            <PropertyRef Name="IdentificacionAplicante" />
+            <PropertyRef Name="identificacionPuesto" />
+          </Key>
+          <Property Name="IdentificacionAplicante" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="identificacionPuesto" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="fechaAplicacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Area_Trabajo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="id" Type="nvarchar" MaxLength="128" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" />
+          <Property Name="estado" Type="bit" />
+          <Property Name="certificacion" Type="bit" />
+          <Property Name="puntos" Type="int" />
+          <Property Name="especialidad" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="id" Type="nvarchar" MaxLength="128" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" />
+          <Property Name="apellido1" Type="varchar" MaxLength="30" />
+          <Property Name="apellido2" Type="varchar" MaxLength="30" />
+          <Property Name="correo" Type="varchar" MaxLength="50" />
+          <Property Name="curriculo" Type="varbinary(max)" />
+          <Property Name="discapacidad" Type="bit" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="30" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="idArea" Type="int" />
+        </EntityType>
+        <EntityType Name="Requerimiento">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="identificacionEmpresa" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Requerimientos_Puesto">
+          <Key>
+            <PropertyRef Name="identificacionPuesto" />
+            <PropertyRef Name="identificacionReq" />
+          </Key>
+          <Property Name="identificacionPuesto" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="identificacionReq" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="imagen" Type="varbinary(max)" />
+          <Property Name="costo" Type="varchar" MaxLength="20" />
+          <Property Name="identificacionPersona" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="Telefono_Empresa">
+          <Key>
+            <PropertyRef Name="identificacion" />
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="numero" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Aplica__Identifi__4CA06362">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Aplica">
+              <PropertyRef Name="IdentificacionAplicante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aplica__identifi__4D94879B">
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+          <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Aplica">
+              <PropertyRef Name="identificacionPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__especia__2B3F6F97">
+          <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="nombre" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="especialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Puesto__idArea__49C3F6B7">
+          <End Role="Area_Trabajo" Type="Self.Area_Trabajo" Multiplicity="0..1" />
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area_Trabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Puesto">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requerimi__ident__300424B4">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+          <End Role="Requerimiento" Type="Self.Requerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Requerimiento">
+              <PropertyRef Name="identificacionEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requerimi__ident__5070F446">
+          <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+          <End Role="Requerimientos_Puesto" Type="Self.Requerimientos_Puesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Requerimientos_Puesto">
+              <PropertyRef Name="identificacionPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requerimi__ident__5165187F">
+          <End Role="Requerimiento" Type="Self.Requerimiento" Multiplicity="1" />
+          <End Role="Requerimientos_Puesto" Type="Self.Requerimientos_Puesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Requerimiento">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Requerimientos_Puesto">
+              <PropertyRef Name="identificacionReq" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Servicio__identi__25869641">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="identificacionPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Telefono___ident__3F466844">
+          <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+          <End Role="Telefono_Empresa" Type="Self.Telefono_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Telefono_Empresa">
+              <PropertyRef Name="identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SIEIModelStoreContainer">
+          <EntitySet Name="Aplica" EntityType="Self.Aplica" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Area_Trabajo" EntityType="Self.Area_Trabajo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requerimiento" EntityType="Self.Requerimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Requerimientos_Puesto" EntityType="Self.Requerimientos_Puesto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Telefono_Empresa" EntityType="Self.Telefono_Empresa" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Aplica__Identifi__4CA06362" Association="Self.FK__Aplica__Identifi__4CA06362">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Aplica" EntitySet="Aplica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aplica__identifi__4D94879B" Association="Self.FK__Aplica__identifi__4D94879B">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Aplica" EntitySet="Aplica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__especia__2B3F6F97" Association="Self.FK__Empresa__especia__2B3F6F97">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Puesto__idArea__49C3F6B7" Association="Self.FK__Puesto__idArea__49C3F6B7">
+            <End Role="Area_Trabajo" EntitySet="Area_Trabajo" />
+            <End Role="Puesto" EntitySet="Puesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requerimi__ident__300424B4" Association="Self.FK__Requerimi__ident__300424B4">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requerimi__ident__5070F446" Association="Self.FK__Requerimi__ident__5070F446">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Requerimientos_Puesto" EntitySet="Requerimientos_Puesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requerimi__ident__5165187F" Association="Self.FK__Requerimi__ident__5165187F">
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+            <End Role="Requerimientos_Puesto" EntitySet="Requerimientos_Puesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Servicio__identi__25869641" Association="Self.FK__Servicio__identi__25869641">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Telefono___ident__3F466844" Association="Self.FK__Telefono___ident__3F466844">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Telefono_Empresa" EntitySet="Telefono_Empresa" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SIEIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Aplica" EntityType="SIEIModel.Aplica" />
+          <EntitySet Name="Area_Trabajo" EntityType="SIEIModel.Area_Trabajo" />
+          <EntitySet Name="Empresa" EntityType="SIEIModel.Empresa" />
+          <EntitySet Name="Especialidad" EntityType="SIEIModel.Especialidad" />
+          <EntitySet Name="Persona" EntityType="SIEIModel.Persona" />
+          <EntitySet Name="Puesto" EntityType="SIEIModel.Puesto" />
+          <EntitySet Name="Requerimiento" EntityType="SIEIModel.Requerimiento" />
+          <EntitySet Name="Servicio" EntityType="SIEIModel.Servicio" />
+          <EntitySet Name="Telefono_Empresa" EntityType="SIEIModel.Telefono_Empresa" />
+          <AssociationSet Name="FK__Aplica__Identifi__4CA06362" Association="SIEIModel.FK__Aplica__Identifi__4CA06362">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Aplica" EntitySet="Aplica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Aplica__identifi__4D94879B" Association="SIEIModel.FK__Aplica__identifi__4D94879B">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Aplica" EntitySet="Aplica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Puesto__idArea__49C3F6B7" Association="SIEIModel.FK__Puesto__idArea__49C3F6B7">
+            <End Role="Area_Trabajo" EntitySet="Area_Trabajo" />
+            <End Role="Puesto" EntitySet="Puesto" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Empresa__especia__2B3F6F97" Association="SIEIModel.FK__Empresa__especia__2B3F6F97">
+            <End Role="Especialidad" EntitySet="Especialidad" />
+            <End Role="Empresa" EntitySet="Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Requerimi__ident__300424B4" Association="SIEIModel.FK__Requerimi__ident__300424B4">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Telefono___ident__3F466844" Association="SIEIModel.FK__Telefono___ident__3F466844">
+            <End Role="Empresa" EntitySet="Empresa" />
+            <End Role="Telefono_Empresa" EntitySet="Telefono_Empresa" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Servicio__identi__25869641" Association="SIEIModel.FK__Servicio__identi__25869641">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="Requerimientos_Puesto" Association="SIEIModel.Requerimientos_Puesto">
+            <End Role="Puesto" EntitySet="Puesto" />
+            <End Role="Requerimiento" EntitySet="Requerimiento" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aplica">
+          <Key>
+            <PropertyRef Name="IdentificacionAplicante" />
+            <PropertyRef Name="identificacionPuesto" />
+          </Key>
+          <Property Name="IdentificacionAplicante" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="identificacionPuesto" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="fechaAplicacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Persona" Relationship="SIEIModel.FK__Aplica__Identifi__4CA06362" FromRole="Aplica" ToRole="Persona" />
+          <NavigationProperty Name="Puesto" Relationship="SIEIModel.FK__Aplica__identifi__4D94879B" FromRole="Aplica" ToRole="Puesto" />
+        </EntityType>
+        <EntityType Name="Area_Trabajo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Puesto" Relationship="SIEIModel.FK__Puesto__idArea__49C3F6B7" FromRole="Area_Trabajo" ToRole="Puesto" />
+        </EntityType>
+        <EntityType Name="Empresa">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="estado" Type="Boolean" />
+          <Property Name="certificacion" Type="Boolean" />
+          <Property Name="puntos" Type="Int32" />
+          <Property Name="especialidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Especialidad1" Relationship="SIEIModel.FK__Empresa__especia__2B3F6F97" FromRole="Empresa" ToRole="Especialidad" />
+          <NavigationProperty Name="Requerimiento" Relationship="SIEIModel.FK__Requerimi__ident__300424B4" FromRole="Empresa" ToRole="Requerimiento" />
+          <NavigationProperty Name="Telefono_Empresa" Relationship="SIEIModel.FK__Telefono___ident__3F466844" FromRole="Empresa" ToRole="Telefono_Empresa" />
+        </EntityType>
+        <EntityType Name="Especialidad">
+          <Key>
+            <PropertyRef Name="nombre" />
+          </Key>
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresa" Relationship="SIEIModel.FK__Empresa__especia__2B3F6F97" FromRole="Especialidad" ToRole="Empresa" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="apellido1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="apellido2" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="curriculo" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="discapacidad" Type="Boolean" />
+          <NavigationProperty Name="Aplica" Relationship="SIEIModel.FK__Aplica__Identifi__4CA06362" FromRole="Persona" ToRole="Aplica" />
+          <NavigationProperty Name="Servicio" Relationship="SIEIModel.FK__Servicio__identi__25869641" FromRole="Persona" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Puesto">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="nombre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="idArea" Type="Int32" />
+          <NavigationProperty Name="Aplica" Relationship="SIEIModel.FK__Aplica__identifi__4D94879B" FromRole="Puesto" ToRole="Aplica" />
+          <NavigationProperty Name="Area_Trabajo" Relationship="SIEIModel.FK__Puesto__idArea__49C3F6B7" FromRole="Puesto" ToRole="Area_Trabajo" />
+          <NavigationProperty Name="Requerimiento" Relationship="SIEIModel.Requerimientos_Puesto" FromRole="Puesto" ToRole="Requerimiento" />
+        </EntityType>
+        <EntityType Name="Requerimiento">
+          <Key>
+            <PropertyRef Name="identificacion" />
+          </Key>
+          <Property Name="identificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="identificacionEmpresa" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresa" Relationship="SIEIModel.FK__Requerimi__ident__300424B4" FromRole="Requerimiento" ToRole="Empresa" />
+          <NavigationProperty Name="Puesto" Relationship="SIEIModel.Requerimientos_Puesto" FromRole="Requerimiento" ToRole="Puesto" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="imagen" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="costo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="identificacionPersona" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Persona" Relationship="SIEIModel.FK__Servicio__identi__25869641" FromRole="Servicio" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Telefono_Empresa">
+          <Key>
+            <PropertyRef Name="identificacion" />
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="identificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="numero" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresa" Relationship="SIEIModel.FK__Telefono___ident__3F466844" FromRole="Telefono_Empresa" ToRole="Empresa" />
+        </EntityType>
+        <Association Name="FK__Aplica__Identifi__4CA06362">
+          <End Type="SIEIModel.Persona" Role="Persona" Multiplicity="1" />
+          <End Type="SIEIModel.Aplica" Role="Aplica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Aplica">
+              <PropertyRef Name="IdentificacionAplicante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Aplica__identifi__4D94879B">
+          <End Type="SIEIModel.Puesto" Role="Puesto" Multiplicity="1" />
+          <End Type="SIEIModel.Aplica" Role="Aplica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Puesto">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Aplica">
+              <PropertyRef Name="identificacionPuesto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Puesto__idArea__49C3F6B7">
+          <End Type="SIEIModel.Area_Trabajo" Role="Area_Trabajo" Multiplicity="0..1" />
+          <End Type="SIEIModel.Puesto" Role="Puesto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area_Trabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Puesto">
+              <PropertyRef Name="idArea" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Empresa__especia__2B3F6F97">
+          <End Type="SIEIModel.Especialidad" Role="Especialidad" Multiplicity="0..1" />
+          <End Type="SIEIModel.Empresa" Role="Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Especialidad">
+              <PropertyRef Name="nombre" />
+            </Principal>
+            <Dependent Role="Empresa">
+              <PropertyRef Name="especialidad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Requerimi__ident__300424B4">
+          <End Type="SIEIModel.Empresa" Role="Empresa" Multiplicity="0..1" />
+          <End Type="SIEIModel.Requerimiento" Role="Requerimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Requerimiento">
+              <PropertyRef Name="identificacionEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Telefono___ident__3F466844">
+          <End Type="SIEIModel.Empresa" Role="Empresa" Multiplicity="1" />
+          <End Type="SIEIModel.Telefono_Empresa" Role="Telefono_Empresa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresa">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Telefono_Empresa">
+              <PropertyRef Name="identificacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Servicio__identi__25869641">
+          <End Type="SIEIModel.Persona" Role="Persona" Multiplicity="0..1" />
+          <End Type="SIEIModel.Servicio" Role="Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="identificacion" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="identificacionPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Requerimientos_Puesto">
+          <End Type="SIEIModel.Puesto" Role="Puesto" Multiplicity="*" />
+          <End Type="SIEIModel.Requerimiento" Role="Requerimiento" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SIEIModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Aplica">
+            <EntityTypeMapping TypeName="SIEIModel.Aplica">
+              <MappingFragment StoreEntitySet="Aplica">
+                <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+                <ScalarProperty Name="identificacionPuesto" ColumnName="identificacionPuesto" />
+                <ScalarProperty Name="IdentificacionAplicante" ColumnName="IdentificacionAplicante" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Area_Trabajo">
+            <EntityTypeMapping TypeName="SIEIModel.Area_Trabajo">
+              <MappingFragment StoreEntitySet="Area_Trabajo">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresa">
+            <EntityTypeMapping TypeName="SIEIModel.Empresa">
+              <MappingFragment StoreEntitySet="Empresa">
+                <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+                <ScalarProperty Name="puntos" ColumnName="puntos" />
+                <ScalarProperty Name="certificacion" ColumnName="certificacion" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Especialidad">
+            <EntityTypeMapping TypeName="SIEIModel.Especialidad">
+              <MappingFragment StoreEntitySet="Especialidad">
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="SIEIModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="discapacidad" ColumnName="discapacidad" />
+                <ScalarProperty Name="curriculo" ColumnName="curriculo" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Puesto">
+            <EntityTypeMapping TypeName="SIEIModel.Puesto">
+              <MappingFragment StoreEntitySet="Puesto">
+                <ScalarProperty Name="idArea" ColumnName="idArea" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requerimiento">
+            <EntityTypeMapping TypeName="SIEIModel.Requerimiento">
+              <MappingFragment StoreEntitySet="Requerimiento">
+                <ScalarProperty Name="identificacionEmpresa" ColumnName="identificacionEmpresa" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicio">
+            <EntityTypeMapping TypeName="SIEIModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="identificacionPersona" ColumnName="identificacionPersona" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="imagen" ColumnName="imagen" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Telefono_Empresa">
+            <EntityTypeMapping TypeName="SIEIModel.Telefono_Empresa">
+              <MappingFragment StoreEntitySet="Telefono_Empresa">
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Requerimientos_Puesto" TypeName="SIEIModel.Requerimientos_Puesto" StoreEntitySet="Requerimientos_Puesto">
+            <EndProperty Name="Requerimiento">
+              <ScalarProperty Name="identificacion" ColumnName="identificacionReq" />
+            </EndProperty>
+            <EndProperty Name="Puesto">
+              <ScalarProperty Name="identificacion" ColumnName="identificacionPuesto" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
