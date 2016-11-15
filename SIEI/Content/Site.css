@@ -163,3 +163,53 @@ input[type="select"] {
         padding: 0;
     }
 }
+
+
+
+.section{
+    text-align:left;
+}
+
+.section h2{
+    text-align:center;
+}
+
+.section p{
+    margin-bottom: 2em;
+    text-align:justify;
+}
+
+
+.section .btn-main{
+    text-align:center;
+}
+
+
+.section > p{
+    height:12em;
+}
+
+
+.main-paragraph{
+    background-color:white;
+}
+
+.form-group{
+    text-align:center;
+}
+
+/***/
+
+
+@media (max-width: 992px) {
+
+    .section{
+        margin-left: 2em;
+    }
+
+    
+
+}
+
+
+
