@@ -1,5 +1,5 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
+using System;
 using System.Web;
 using System.Web.UI;
 using Microsoft.AspNet.Identity;
@@ -10,10 +10,10 @@ using SIEI.Capas.Capa_Control;
 
 namespace SIEI.Account
 {
-    public partial class Register : Page
+    public partial class RegistrarEmpresa : Page
     {
 
-        ControladoraPersonal controladoraPersonas = new ControladoraPersonal();
+        ControladoraEmpresas controladoraEmpresas = new ControladoraEmpresas();
 
         protected void CreateUser_Click(object sender, EventArgs e)
         {
@@ -28,28 +28,29 @@ namespace SIEI.Account
                 //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
                 //manager.SendEmail(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>.");
 
-                signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
+                signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
 
                 //Creo el objeto con los atributos necesarios para crear la nueva persona
-                Object[] nuevaPersona = new Object[3];
-                nuevaPersona[0] = txtIdentificacion.Text;
-                nuevaPersona[1] = txtEmail.Text;
-                nuevaPersona[2] = user.Id;
-                
+                Object[] nuevaEmpresa = new Object[3];
+                nuevaEmpresa[0] = txtIdentificacion.Text;
+                nuevaEmpresa[1] = txtNombre.Text;
+                nuevaEmpresa[2] = user.Id;
 
                 //Llamo a la controladora para que realice la inserción de la persona en el sistema
-                controladoraPersonas.insertarPersona(nuevaPersona);
-
+                controladoraEmpresas.insertarEmpresa(nuevaEmpresa);
                 check.Style.Clear();
+
                 //txtconfirmPassword.Text = "";
                 //txtEmail.Text = "";
                 //txtIdentificacion.Text = "";
+                //txtNombre.Text = "";
                 //txtPassword.Text = "";
 
-               // IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
-            else 
+            else
             {
+
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
                 error.Style.Clear();
             }

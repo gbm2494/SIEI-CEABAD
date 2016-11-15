@@ -11,7 +11,8 @@ namespace SIEI.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using SIEI.Capas.Capa_Entidad;
+
     public partial class Empresa
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +21,15 @@ namespace SIEI.Models
             this.Requerimiento = new HashSet<Requerimiento>();
             this.Telefono_Empresa = new HashSet<Telefono_Empresa>();
         }
-    
+
+        /**/
+        public Empresa(EntidadEmpresa nuevaEmpresa)
+        {
+            identificacion = nuevaEmpresa.getIdentificacion;
+            nombre = nuevaEmpresa.getNombre;
+            id = nuevaEmpresa.getId;
+        }
+
         public string identificacion { get; set; }
         public string id { get; set; }
         public string nombre { get; set; }

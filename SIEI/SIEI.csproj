@@ -196,7 +196,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
-    <Content Include="Account\RegistrarPersona.aspx" />
+    <Content Include="Account\RegistrarEmpresa.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
@@ -363,12 +363,12 @@
     <Compile Include="Account\RegisterExternalLogin.aspx.designer.cs">
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\RegistrarPersona.aspx.cs">
-      <DependentUpon>RegistrarPersona.aspx</DependentUpon>
+    <Compile Include="Account\RegistrarEmpresa.aspx.cs">
+      <DependentUpon>RegistrarEmpresa.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Account\RegistrarPersona.aspx.designer.cs">
-      <DependentUpon>RegistrarPersona.aspx</DependentUpon>
+    <Compile Include="Account\RegistrarEmpresa.aspx.designer.cs">
+      <DependentUpon>RegistrarEmpresa.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
@@ -409,8 +409,11 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Capas\Capa Control\ControladoraEmpresas.cs" />
     <Compile Include="Capas\Capa Control\ControladoraPersonal.cs" />
+    <Compile Include="Capas\Capa de Acceso a Datos\ControladoraBDEmpresas.cs" />
     <Compile Include="Capas\Capa de Acceso a Datos\ControladoraBDPersonal.cs" />
+    <Compile Include="Capas\Capa Entidad\EntidadEmpresa.cs" />
     <Compile Include="Capas\Capa Entidad\EntidadPersona.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

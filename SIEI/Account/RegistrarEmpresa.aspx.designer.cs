@@ -10,7 +10,7 @@
 namespace SIEI.Account {
     
     
-    public partial class Register {
+    public partial class RegistrarEmpresa {
         
         /// <summary>
         /// ErrorMessage control.
@@ -47,6 +47,15 @@ namespace SIEI.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIdentificacion;
+        
+        /// <summary>
+        /// txtNombre control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
         /// txtEmail control.
