@@ -84,11 +84,51 @@
         </div>
         <footer>
             <div id="footer">
-               <div class = "footer-text"> <p>Contacto</p></div>
-        </div>
-            <div id="derechos">
-                 <div class = "footer-text"> <p>Derechos</p></div>
+                <div class=" container">
+                    <div class="row">
+                        <div id="contactar" class="col-xs-12">
+                            <p><strong>Contactar</strong></p>
+                        </div>
+
+                    </div>
+
+                  
+                        <div class="row center">
+                            <ul class="">
+                                <li>
+                                    <p><span class="glyphicon glyphicon-envelope"></span>  devmyrrie@gmail.com</p>
+                                </li>
+                                <li>
+                                    <p><span class="glyphicon glyphicon-map-marker"></span>  Managua, Nicaragua.</p>
+                                </li>
+                                <li>
+                                    <p><span class="glyphicon glyphicon-phone"></span>  +505 8523 6822</p>
+                                </li>
+                            </ul>
+
+                    </div>
+
+                    <div class ="row">
+                    <div id="social-media">
+                        <a href="#" class="contact">
+                            <img src="/Img/twitter.png" width="50" />
+                        </a>
+
+
+                        <a href="#" class="contact">
+                            <img src="/Img/tumblr.png" width="50" />
+                        </a>
+
+                        <a href="#" class="contact">
+                            <img src="/Img/fb.png" width="50" />
+                        </a>
+                    </div>
+                </div>
+                    </div>
             </div>
+
+
+
         </footer>
     </form>
 </body>
