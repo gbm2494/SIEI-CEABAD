@@ -201,6 +201,7 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\bootstrap-social.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
@@ -216,6 +217,12 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelo.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Img\1479261763_twitter_social_media_logo.png" />
+    <Content Include="Img\1479261812_facebook_social_media_logo.png" />
+    <Content Include="Img\1479261833_tumblr_social_media_logo.png" />
+    <Content Include="Img\fb.png" />
+    <Content Include="Img\tumblr.png" />
+    <Content Include="Img\twitter.png" />
     <Content Include="Models\Modelo.edmx.diagram">
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Content>
