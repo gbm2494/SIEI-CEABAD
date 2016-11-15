@@ -85,7 +85,7 @@
         <footer>
             <div id="footer">
                <div class = "footer-text"> <p>Contacto</p></div>
-        
+        </div>
             <div id="derechos">
                  <div class = "footer-text"> <p>Derechos</p></div>
             </div>
