@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SIEIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Aplica">
+    <Key>
+      <PropertyRef Name="IdentificacionAplicante" />
+      <PropertyRef Name="identificacionPuesto" />
+    </Key>
+    <Property Name="IdentificacionAplicante" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="identificacionPuesto" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="fechaAplicacion" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Area_Trabajo">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Empresa">
+    <Key>
+      <PropertyRef Name="identificacion" />
+    </Key>
+    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="id" Type="nvarchar" MaxLength="128" />
+    <Property Name="nombre" Type="varchar" MaxLength="30" />
+    <Property Name="estado" Type="bit" />
+    <Property Name="certificacion" Type="bit" />
+    <Property Name="puntos" Type="int" />
+    <Property Name="especialidad" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Especialidad">
+    <Key>
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="identificacion" />
+    </Key>
+    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="id" Type="nvarchar" MaxLength="128" />
+    <Property Name="nombre" Type="varchar" MaxLength="30" />
+    <Property Name="apellido1" Type="varchar" MaxLength="30" />
+    <Property Name="apellido2" Type="varchar" MaxLength="30" />
+    <Property Name="correo" Type="varchar" MaxLength="50" />
+    <Property Name="curriculo" Type="varbinary(max)" />
+    <Property Name="discapacidad" Type="bit" />
+  </EntityType>
+  <EntityType Name="Puesto">
+    <Key>
+      <PropertyRef Name="identificacion" />
+    </Key>
+    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="nombre" Type="varchar" MaxLength="30" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="idArea" Type="int" />
+  </EntityType>
+  <EntityType Name="Requerimiento">
+    <Key>
+      <PropertyRef Name="identificacion" />
+    </Key>
+    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="identificacionEmpresa" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'SIEI.dbo.Requerimientos_Puesto' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Requerimientos_Puesto">
+          <Property Name="identificacionPuesto" Type="varchar" MaxLength="15" />
+          <Property Name="identificacionReq" Type="varchar" MaxLength="15" />
+        </EntityType>-->
+  <EntityType Name="Servicio">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="imagen" Type="varbinary(max)" />
+    <Property Name="costo" Type="varchar" MaxLength="20" />
+    <Property Name="identificacionPersona" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="Telefono_Empresa">
+    <Key>
+      <PropertyRef Name="identificacion" />
+      <PropertyRef Name="numero" />
+    </Key>
+    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Telefono_Persona">
+    <Key>
+      <PropertyRef Name="identificacion" />
+      <PropertyRef Name="numero" />
+    </Key>
+    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIEI.dbo.Trabaja_En' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Trabaja_En">
+    <Key>
+      <PropertyRef Name="fechaInicio" />
+    </Key>
+    <Property Name="idenficacionPersona" Type="varchar" MaxLength="15" />
+    <Property Name="identifcacionPuesto" Type="varchar" MaxLength="15" />
+    <Property Name="fechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="fechafinal" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__Aplica__Identifi__35BCFE0A">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Aplica">
+        <PropertyRef Name="IdentificacionAplicante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Aplica__identifi__36B12243">
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+    <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Aplica">
+        <PropertyRef Name="identificacionPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Empresa__especia__2B3F6F97">
+    <End Role="Especialidad" Type="Self.Especialidad" Multiplicity="0..1" />
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Especialidad">
+        <PropertyRef Name="nombre" />
+      </Principal>
+      <Dependent Role="Empresa">
+        <PropertyRef Name="especialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Puesto__idArea__32E0915F">
+    <End Role="Area_Trabajo" Type="Self.Area_Trabajo" Multiplicity="0..1" />
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Area_Trabajo">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Puesto">
+        <PropertyRef Name="idArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Requerimi__ident__300424B4">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="0..1" />
+    <End Role="Requerimiento" Type="Self.Requerimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Requerimiento">
+        <PropertyRef Name="identificacionEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Requerimi__ident__38996AB5" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__Requerimi__ident__398D8EEE" />-->
+  <Association Name="FK__Servicio__identi__25869641">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="identificacionPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Telefono___ident__22AA2996">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Telefono_Persona" Type="Self.Telefono_Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Telefono_Persona">
+        <PropertyRef Name="identificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Telefono___ident__3F466844">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+    <End Role="Telefono_Empresa" Type="Self.Telefono_Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Telefono_Empresa">
+        <PropertyRef Name="identificacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trabaja_E__idenf__3B75D760">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="Trabaja_En" Type="Self.Trabaja_En" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Trabaja_En">
+        <PropertyRef Name="idenficacionPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trabaja_E__ident__3C69FB99">
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="0..1" />
+    <End Role="Trabaja_En" Type="Self.Trabaja_En" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Trabaja_En">
+        <PropertyRef Name="identifcacionPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SIEIModelStoreContainer">
+    <EntitySet Name="Aplica" EntityType="Self.Aplica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Area_Trabajo" EntityType="Self.Area_Trabajo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Empresa" EntityType="Self.Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Especialidad" EntityType="Self.Especialidad" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Requerimiento" EntityType="Self.Requerimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Telefono_Empresa" EntityType="Self.Telefono_Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Telefono_Persona" EntityType="Self.Telefono_Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trabaja_En" EntityType="Self.Trabaja_En" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Trabaja_En].[idenficacionPersona] AS [idenficacionPersona], 
+    [Trabaja_En].[identifcacionPuesto] AS [identifcacionPuesto], 
+    [Trabaja_En].[fechaInicio] AS [fechaInicio], 
+    [Trabaja_En].[fechafinal] AS [fechafinal]
+    FROM [dbo].[Trabaja_En] AS [Trabaja_En]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Aplica__Identifi__35BCFE0A" Association="Self.FK__Aplica__Identifi__35BCFE0A">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Aplica" EntitySet="Aplica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Aplica__identifi__36B12243" Association="Self.FK__Aplica__identifi__36B12243">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Aplica" EntitySet="Aplica" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Empresa__especia__2B3F6F97" Association="Self.FK__Empresa__especia__2B3F6F97">
+      <End Role="Especialidad" EntitySet="Especialidad" />
+      <End Role="Empresa" EntitySet="Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Puesto__idArea__32E0915F" Association="Self.FK__Puesto__idArea__32E0915F">
+      <End Role="Area_Trabajo" EntitySet="Area_Trabajo" />
+      <End Role="Puesto" EntitySet="Puesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Requerimi__ident__300424B4" Association="Self.FK__Requerimi__ident__300424B4">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Requerimiento" EntitySet="Requerimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Servicio__identi__25869641" Association="Self.FK__Servicio__identi__25869641">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Telefono___ident__22AA2996" Association="Self.FK__Telefono___ident__22AA2996">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Telefono_Persona" EntitySet="Telefono_Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Telefono___ident__3F466844" Association="Self.FK__Telefono___ident__3F466844">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Telefono_Empresa" EntitySet="Telefono_Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trabaja_E__idenf__3B75D760" Association="Self.FK__Trabaja_E__idenf__3B75D760">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Trabaja_En" EntitySet="Trabaja_En" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trabaja_E__ident__3C69FB99" Association="Self.FK__Trabaja_E__ident__3C69FB99">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Trabaja_En" EntitySet="Trabaja_En" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

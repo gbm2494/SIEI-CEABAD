@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SIEIModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Aplica">
+      <EntityTypeMapping TypeName="SIEIModel.Aplica">
+        <MappingFragment StoreEntitySet="Aplica">
+          <ScalarProperty Name="IdentificacionAplicante" ColumnName="IdentificacionAplicante" />
+          <ScalarProperty Name="identificacionPuesto" ColumnName="identificacionPuesto" />
+          <ScalarProperty Name="fechaAplicacion" ColumnName="fechaAplicacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Area_Trabajo">
+      <EntityTypeMapping TypeName="SIEIModel.Area_Trabajo">
+        <MappingFragment StoreEntitySet="Area_Trabajo">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empresa">
+      <EntityTypeMapping TypeName="SIEIModel.Empresa">
+        <MappingFragment StoreEntitySet="Empresa">
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="certificacion" ColumnName="certificacion" />
+          <ScalarProperty Name="puntos" ColumnName="puntos" />
+          <ScalarProperty Name="especialidad" ColumnName="especialidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Especialidad">
+      <EntityTypeMapping TypeName="SIEIModel.Especialidad">
+        <MappingFragment StoreEntitySet="Especialidad">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Persona">
+      <EntityTypeMapping TypeName="SIEIModel.Persona">
+        <MappingFragment StoreEntitySet="Persona">
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="correo" ColumnName="correo" />
+          <ScalarProperty Name="curriculo" ColumnName="curriculo" />
+          <ScalarProperty Name="discapacidad" ColumnName="discapacidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Puesto">
+      <EntityTypeMapping TypeName="SIEIModel.Puesto">
+        <MappingFragment StoreEntitySet="Puesto">
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idArea" ColumnName="idArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requerimiento">
+      <EntityTypeMapping TypeName="SIEIModel.Requerimiento">
+        <MappingFragment StoreEntitySet="Requerimiento">
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="identificacionEmpresa" ColumnName="identificacionEmpresa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Servicio">
+      <EntityTypeMapping TypeName="SIEIModel.Servicio">
+        <MappingFragment StoreEntitySet="Servicio">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="imagen" ColumnName="imagen" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="identificacionPersona" ColumnName="identificacionPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telefono_Empresa">
+      <EntityTypeMapping TypeName="SIEIModel.Telefono_Empresa">
+        <MappingFragment StoreEntitySet="Telefono_Empresa">
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telefono_Persona">
+      <EntityTypeMapping TypeName="SIEIModel.Telefono_Persona">
+        <MappingFragment StoreEntitySet="Telefono_Persona">
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trabaja_En">
+      <EntityTypeMapping TypeName="SIEIModel.Trabaja_En">
+        <MappingFragment StoreEntitySet="Trabaja_En">
+          <ScalarProperty Name="idenficacionPersona" ColumnName="idenficacionPersona" />
+          <ScalarProperty Name="identifcacionPuesto" ColumnName="identifcacionPuesto" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
