@@ -1,8 +1,12 @@
 ﻿<%@ Page Title="Registro de personas" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="SIEI.Account.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
+
+    
+
+
     <div class =" text-center">
-    <h2><%: Title %></h2>
+    <h2 style="padding-top:3em"><%: Title %></h2>
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" Visible="false" />
     </p>
@@ -12,7 +16,17 @@
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
-
+         <script type = "text/javascript">
+        function removeHeader()
+        {
+            document.getElementById("aNav").className =
+                document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
+            document.getElementById("imgHeader").style.display = "none";
+            document.getElementById("regPers").style.fontSize = "1em";
+            document.getElementById("regEmp").style.fontSize = "1em";
+        }
+        removeHeader();
+    </script> 
 
         <div class="row">
             <div class="col-md-8 col-md-offset-3">

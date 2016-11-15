@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="jumbotron main-paragraph">
+    <div class="jumbotron main-paragraph myJumbo">
         <h1>Sistema Integral de Empleo Inclusivo</h1>
         <p class="lead">
             Plataforma de búsqueda de oportunidades laborales para personas que se encuentran en desventaja social al buscar empleo. Las empresas
