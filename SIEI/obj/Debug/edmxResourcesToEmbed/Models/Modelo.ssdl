@@ -64,12 +64,14 @@
     <Property Name="descripcion" Type="varchar" MaxLength="100" />
     <Property Name="identificacionEmpresa" Type="varchar" MaxLength="15" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'SIEI.dbo.Requerimientos_Puesto' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="Requerimientos_Puesto">
-          <Property Name="identificacionPuesto" Type="varchar" MaxLength="15" />
-          <Property Name="identificacionReq" Type="varchar" MaxLength="15" />
-        </EntityType>-->
+  <EntityType Name="Requerimientos_Puesto">
+    <Key>
+      <PropertyRef Name="identificacionPuesto" />
+      <PropertyRef Name="identificacionReq" />
+    </Key>
+    <Property Name="identificacionPuesto" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="identificacionReq" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
   <EntityType Name="Servicio">
     <Key>
       <PropertyRef Name="id" />
@@ -88,26 +90,7 @@ warning 6013: The table/view 'SIEI.dbo.Requerimientos_Puesto' does not have a pr
     <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="numero" Type="varchar" MaxLength="15" Nullable="false" />
   </EntityType>
-  <EntityType Name="Telefono_Persona">
-    <Key>
-      <PropertyRef Name="identificacion" />
-      <PropertyRef Name="numero" />
-    </Key>
-    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
-    <Property Name="numero" Type="varchar" MaxLength="15" Nullable="false" />
-  </EntityType>
-  <!--Errors Found During Generation:
-warning 6002: The table/view 'SIEI.dbo.Trabaja_En' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-  <EntityType Name="Trabaja_En">
-    <Key>
-      <PropertyRef Name="fechaInicio" />
-    </Key>
-    <Property Name="idenficacionPersona" Type="varchar" MaxLength="15" />
-    <Property Name="identifcacionPuesto" Type="varchar" MaxLength="15" />
-    <Property Name="fechaInicio" Type="datetime" Nullable="false" />
-    <Property Name="fechafinal" Type="datetime" />
-  </EntityType>
-  <Association Name="FK__Aplica__Identifi__35BCFE0A">
+  <Association Name="FK__Aplica__Identifi__4CA06362">
     <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
     <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -119,7 +102,7 @@ warning 6002: The table/view 'SIEI.dbo.Trabaja_En' does not have a primary key d
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Aplica__identifi__36B12243">
+  <Association Name="FK__Aplica__identifi__4D94879B">
     <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
     <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -143,7 +126,7 @@ warning 6002: The table/view 'SIEI.dbo.Trabaja_En' does not have a primary key d
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Puesto__idArea__32E0915F">
+  <Association Name="FK__Puesto__idArea__49C3F6B7">
     <End Role="Area_Trabajo" Type="Self.Area_Trabajo" Multiplicity="0..1" />
     <End Role="Puesto" Type="Self.Puesto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -167,12 +150,30 @@ warning 6002: The table/view 'SIEI.dbo.Trabaja_En' does not have a primary key d
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <!--Errors Found During Generation:
-error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Requerimi__ident__38996AB5" />-->
-  <!--Errors Found During Generation:
-error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__Requerimi__ident__398D8EEE" />-->
+  <Association Name="FK__Requerimi__ident__5070F446">
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
+    <End Role="Requerimientos_Puesto" Type="Self.Requerimientos_Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Requerimientos_Puesto">
+        <PropertyRef Name="identificacionPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Requerimi__ident__5165187F">
+    <End Role="Requerimiento" Type="Self.Requerimiento" Multiplicity="1" />
+    <End Role="Requerimientos_Puesto" Type="Self.Requerimientos_Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Requerimiento">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Requerimientos_Puesto">
+        <PropertyRef Name="identificacionReq" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__Servicio__identi__25869641">
     <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
     <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
@@ -182,18 +183,6 @@ error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relati
       </Principal>
       <Dependent Role="Servicio">
         <PropertyRef Name="identificacionPersona" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Telefono___ident__22AA2996">
-    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
-    <End Role="Telefono_Persona" Type="Self.Telefono_Persona" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Persona">
-        <PropertyRef Name="identificacion" />
-      </Principal>
-      <Dependent Role="Telefono_Persona">
-        <PropertyRef Name="identificacion" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -209,30 +198,6 @@ error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relati
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Trabaja_E__idenf__3B75D760">
-    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
-    <End Role="Trabaja_En" Type="Self.Trabaja_En" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Persona">
-        <PropertyRef Name="identificacion" />
-      </Principal>
-      <Dependent Role="Trabaja_En">
-        <PropertyRef Name="idenficacionPersona" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Trabaja_E__ident__3C69FB99">
-    <End Role="Puesto" Type="Self.Puesto" Multiplicity="0..1" />
-    <End Role="Trabaja_En" Type="Self.Trabaja_En" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Puesto">
-        <PropertyRef Name="identificacion" />
-      </Principal>
-      <Dependent Role="Trabaja_En">
-        <PropertyRef Name="identifcacionPuesto" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="SIEIModelStoreContainer">
     <EntitySet Name="Aplica" EntityType="Self.Aplica" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Area_Trabajo" EntityType="Self.Area_Trabajo" Schema="dbo" store:Type="Tables" />
@@ -241,22 +206,14 @@ error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relati
     <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Requerimiento" EntityType="Self.Requerimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Requerimientos_Puesto" EntityType="Self.Requerimientos_Puesto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Telefono_Empresa" EntityType="Self.Telefono_Empresa" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Telefono_Persona" EntityType="Self.Telefono_Persona" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Trabaja_En" EntityType="Self.Trabaja_En" store:Type="Tables" store:Schema="dbo">
-      <DefiningQuery>SELECT 
-    [Trabaja_En].[idenficacionPersona] AS [idenficacionPersona], 
-    [Trabaja_En].[identifcacionPuesto] AS [identifcacionPuesto], 
-    [Trabaja_En].[fechaInicio] AS [fechaInicio], 
-    [Trabaja_En].[fechafinal] AS [fechafinal]
-    FROM [dbo].[Trabaja_En] AS [Trabaja_En]</DefiningQuery>
-    </EntitySet>
-    <AssociationSet Name="FK__Aplica__Identifi__35BCFE0A" Association="Self.FK__Aplica__Identifi__35BCFE0A">
+    <AssociationSet Name="FK__Aplica__Identifi__4CA06362" Association="Self.FK__Aplica__Identifi__4CA06362">
       <End Role="Persona" EntitySet="Persona" />
       <End Role="Aplica" EntitySet="Aplica" />
     </AssociationSet>
-    <AssociationSet Name="FK__Aplica__identifi__36B12243" Association="Self.FK__Aplica__identifi__36B12243">
+    <AssociationSet Name="FK__Aplica__identifi__4D94879B" Association="Self.FK__Aplica__identifi__4D94879B">
       <End Role="Puesto" EntitySet="Puesto" />
       <End Role="Aplica" EntitySet="Aplica" />
     </AssociationSet>
@@ -264,7 +221,7 @@ error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relati
       <End Role="Especialidad" EntitySet="Especialidad" />
       <End Role="Empresa" EntitySet="Empresa" />
     </AssociationSet>
-    <AssociationSet Name="FK__Puesto__idArea__32E0915F" Association="Self.FK__Puesto__idArea__32E0915F">
+    <AssociationSet Name="FK__Puesto__idArea__49C3F6B7" Association="Self.FK__Puesto__idArea__49C3F6B7">
       <End Role="Area_Trabajo" EntitySet="Area_Trabajo" />
       <End Role="Puesto" EntitySet="Puesto" />
     </AssociationSet>
@@ -272,25 +229,21 @@ error 6004: The table 'SIEI.dbo.Requerimientos_Puesto' is referenced by a relati
       <End Role="Empresa" EntitySet="Empresa" />
       <End Role="Requerimiento" EntitySet="Requerimiento" />
     </AssociationSet>
+    <AssociationSet Name="FK__Requerimi__ident__5070F446" Association="Self.FK__Requerimi__ident__5070F446">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Requerimientos_Puesto" EntitySet="Requerimientos_Puesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Requerimi__ident__5165187F" Association="Self.FK__Requerimi__ident__5165187F">
+      <End Role="Requerimiento" EntitySet="Requerimiento" />
+      <End Role="Requerimientos_Puesto" EntitySet="Requerimientos_Puesto" />
+    </AssociationSet>
     <AssociationSet Name="FK__Servicio__identi__25869641" Association="Self.FK__Servicio__identi__25869641">
       <End Role="Persona" EntitySet="Persona" />
       <End Role="Servicio" EntitySet="Servicio" />
     </AssociationSet>
-    <AssociationSet Name="FK__Telefono___ident__22AA2996" Association="Self.FK__Telefono___ident__22AA2996">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="Telefono_Persona" EntitySet="Telefono_Persona" />
-    </AssociationSet>
     <AssociationSet Name="FK__Telefono___ident__3F466844" Association="Self.FK__Telefono___ident__3F466844">
       <End Role="Empresa" EntitySet="Empresa" />
       <End Role="Telefono_Empresa" EntitySet="Telefono_Empresa" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Trabaja_E__idenf__3B75D760" Association="Self.FK__Trabaja_E__idenf__3B75D760">
-      <End Role="Persona" EntitySet="Persona" />
-      <End Role="Trabaja_En" EntitySet="Trabaja_En" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Trabaja_E__ident__3C69FB99" Association="Self.FK__Trabaja_E__ident__3C69FB99">
-      <End Role="Puesto" EntitySet="Puesto" />
-      <End Role="Trabaja_En" EntitySet="Trabaja_En" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

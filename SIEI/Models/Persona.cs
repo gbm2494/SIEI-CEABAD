@@ -11,14 +11,24 @@ namespace SIEI.Models
 {
     using System;
     using System.Collections.Generic;
+    using SIEI.Capas.Capa_Entidad;
     
     public partial class Persona
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+
         public Persona()
         {
             this.Aplica = new HashSet<Aplica>();
             this.Servicio = new HashSet<Servicio>();
+        }
+
+        /**/
+        public Persona(EntidadPersona nuevaPersona)
+        {
+            identificacion = nuevaPersona.getIdentificacion;
+            id = nuevaPersona.getId;
+            correo = nuevaPersona.getCorreo;
         }
     
         public string identificacion { get; set; }

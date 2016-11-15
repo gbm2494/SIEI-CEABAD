@@ -153,6 +153,5 @@ C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.Google.
 C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache
 C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.dll
 C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.pdb
