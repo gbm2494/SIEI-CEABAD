@@ -46,7 +46,9 @@ namespace SIEI.Account
                 //txtIdentificacion.Text = "";
                 //txtPassword.Text = "";
 
-               // IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                Session["Role"] = "Persona";
+                 
+               IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
             }
             else 
             {

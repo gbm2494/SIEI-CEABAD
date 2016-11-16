@@ -34,8 +34,8 @@
 
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="comboRol" CssClass="col-md-2 control-label">Rol:</asp:Label>
-                        <div class="col-md-4">
-                            <asp:DropDownList runat="server" ID="comboRol" AutoPostBack="True" CssClass="form-control">
+                        <div class="col-md-5">
+                            <asp:DropDownList runat="server" ID="comboRol" CssClass="form-control">
                             </asp:DropDownList>
                         </div>
                     </div>
