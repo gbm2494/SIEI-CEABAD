@@ -31,24 +31,6 @@ namespace SIEI {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl aNav;
         
         /// <summary>
-        /// regPers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor regPers;
-        
-        /// <summary>
-        /// regEmp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor regEmp;
-        
-        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
