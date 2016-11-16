@@ -4,7 +4,7 @@
     <h2 style="padding-top: 3em"><%: Title %> </h2>
     <div class="row">
         <div class="form-horizontal col-md-6">
-            <h4>Datos personales</h4>
+            <h1>Datos personales</h1>
             <hr />
             <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
