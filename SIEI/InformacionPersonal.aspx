@@ -14,7 +14,9 @@
                         document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
                     document.getElementById("imgHeader").style.display = "none";
                     document.getElementById("regPers").style.fontSize = "1em";
-                    document.getElementById("regEmp").style.fontSize = "1em";
+                    document.getElementById("bscEmpleo").style.fontSize = "1em";
+                    document.getElementById("contServ").style.fontSize = "1em";
+                    document.getElementById("ofrecerServ").style.fontSize = "1em";
                 }
                 removeHeader();
             </script>
