@@ -34,5 +34,9 @@ namespace SIEI.Models
         public virtual DbSet<Requerimiento> Requerimiento { get; set; }
         public virtual DbSet<Servicio> Servicio { get; set; }
         public virtual DbSet<Telefono_Empresa> Telefono_Empresa { get; set; }
+        public virtual DbSet<Telefono_Persona> Telefono_Persona { get; set; }
+        public virtual DbSet<Tipo_Servicio> Tipo_Servicio { get; set; }
+        public virtual DbSet<Ubicacion> Ubicacion { get; set; }
+        public virtual DbSet<Trabaja_En> Trabaja_En { get; set; }
     }
 }

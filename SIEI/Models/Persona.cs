@@ -12,15 +12,16 @@ namespace SIEI.Models
     using System;
     using System.Collections.Generic;
     using SIEI.Capas.Capa_Entidad;
-    
+
     public partial class Persona
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-
         public Persona()
         {
             this.Aplica = new HashSet<Aplica>();
             this.Servicio = new HashSet<Servicio>();
+            this.Telefono_Persona = new HashSet<Telefono_Persona>();
+            this.Trabaja_En = new HashSet<Trabaja_En>();
         }
 
         /**/
@@ -30,7 +31,7 @@ namespace SIEI.Models
             id = nuevaPersona.getId;
             correo = nuevaPersona.getCorreo;
         }
-    
+
         public string identificacion { get; set; }
         public string id { get; set; }
         public string nombre { get; set; }
@@ -44,5 +45,9 @@ namespace SIEI.Models
         public virtual ICollection<Aplica> Aplica { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servicio> Servicio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Telefono_Persona> Telefono_Persona { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Trabaja_En> Trabaja_En { get; set; }
     }
 }

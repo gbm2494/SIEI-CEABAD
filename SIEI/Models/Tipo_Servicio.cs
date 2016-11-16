@@ -12,16 +12,17 @@ namespace SIEI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Servicio
+    public partial class Tipo_Servicio
     {
-        public int id { get; set; }
-        public string descripcion { get; set; }
-        public byte[] imagen { get; set; }
-        public string costo { get; set; }
-        public string tipoServicio { get; set; }
-        public string identificacionPersona { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tipo_Servicio()
+        {
+            this.Servicio = new HashSet<Servicio>();
+        }
     
-        public virtual Persona Persona { get; set; }
-        public virtual Tipo_Servicio Tipo_Servicio { get; set; }
+        public string nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Servicio> Servicio { get; set; }
     }
 }

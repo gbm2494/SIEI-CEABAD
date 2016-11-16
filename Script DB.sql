@@ -16,12 +16,16 @@ numero varchar(15),
 PRIMARY KEY (identificacion, numero)
 );
 
+CREATE TABLE Tipo_Servicio(
+nombre varchar(50) PRIMARY KEY,
+);
 
 CREATE TABLE Servicio(
 id int identity(1,1) PRIMARY KEY, 
 descripcion varchar(200),
 imagen varbinary(max),
 costo varchar(20),
+tipoServicio varchar(50) FOREIGN KEY REFERENCES Tipo_Servicio(nombre),
 identificacionPersona varchar(15) FOREIGN KEY REFERENCES Persona(identificacion)
 );
 
@@ -39,6 +43,15 @@ puntos int,
 especialidad varchar(50) FOREIGN KEY REFERENCES Especialidad(nombre), 
 );
 
+CREATE TABLE Ubicacion(
+nombre varchar(50) PRIMARY KEY
+);
+
+CREATE TABLE Ubicacion_Empresa(
+	identificacionEmpresa varchar(15) FOREIGN KEY REFERENCES Empresa(identificacion),
+	ubicacionEmpresa varchar(50) FOREIGN KEY REFERENCES Ubicacion(nombre),
+	PRIMARY KEY (identificacionEmpresa, ubicacionEmpresa)
+);
 
 CREATE TABLE Area_Trabajo(
 id int identity(1,1) PRIMARY KEY, 
@@ -55,6 +68,7 @@ CREATE TABLE Puesto(
 identificacion varchar(15) PRIMARY KEY,
 nombre varchar(30),
 descripcion varchar(100),
+ubicacionPuesto varchar(50) FOREIGN KEY REFERENCES Ubicacion(nombre),
 idArea int FOREIGN KEY REFERENCES Area_Trabajo(Id)
 );
 
