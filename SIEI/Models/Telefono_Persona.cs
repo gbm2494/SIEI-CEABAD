@@ -12,16 +12,11 @@ namespace SIEI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Servicio
+    public partial class Telefono_Persona
     {
-        public int id { get; set; }
-        public string descripcion { get; set; }
-        public byte[] imagen { get; set; }
-        public string costo { get; set; }
-        public string tipoServicio { get; set; }
-        public string identificacionPersona { get; set; }
+        public string identificacion { get; set; }
+        public string numero { get; set; }
     
         public virtual Persona Persona { get; set; }
-        public virtual Tipo_Servicio Tipo_Servicio { get; set; }
     }
 }

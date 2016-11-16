@@ -234,4 +234,3 @@ C:\Users\ucr\Desktop\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.OAuth.xml
 C:\Users\ucr\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache
 C:\Users\ucr\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.dll
 C:\Users\ucr\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.pdb
-C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache

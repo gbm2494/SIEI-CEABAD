@@ -5,23 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="f7ef670f1ae44c1f80bbb33fc442c118" Name="Diagram1">
-        <EntityTypeShape EntityType="SIEIModel.Aplica" Width="1.5" PointX="5.25" PointY="0.75" />
-        <EntityTypeShape EntityType="SIEIModel.Area_Trabajo" Width="1.5" PointX="0.75" PointY="4" />
-        <EntityTypeShape EntityType="SIEIModel.Empresa" Width="1.5" PointX="3" PointY="11.25" />
-        <EntityTypeShape EntityType="SIEIModel.Especialidad" Width="1.5" PointX="0.75" PointY="12" />
-        <EntityTypeShape EntityType="SIEIModel.Persona" Width="1.5" PointX="3" PointY="7.375" />
-        <EntityTypeShape EntityType="SIEIModel.Puesto" Width="1.5" PointX="3" PointY="3.5" />
-        <EntityTypeShape EntityType="SIEIModel.Requerimiento" Width="1.5" PointX="5.25" PointY="3.75" />
-        <EntityTypeShape EntityType="SIEIModel.Servicio" Width="1.5" PointX="5.25" PointY="7.875" />
-        <EntityTypeShape EntityType="SIEIModel.Telefono_Empresa" Width="1.5" PointX="5.25" PointY="12" />
-        <AssociationConnector Association="SIEIModel.FK__Aplica__Identifi__4CA06362" />
-        <AssociationConnector Association="SIEIModel.FK__Aplica__identifi__4D94879B" />
-        <AssociationConnector Association="SIEIModel.FK__Puesto__idArea__49C3F6B7" />
+        <EntityTypeShape EntityType="SIEIModel.Aplica" Width="1.5" PointX="12.75" PointY="4.125" />
+        <EntityTypeShape EntityType="SIEIModel.Area_Trabajo" Width="1.5" PointX="5.25" PointY="1.375" />
+        <EntityTypeShape EntityType="SIEIModel.Empresa" Width="1.5" PointX="3" PointY="4.75" />
+        <EntityTypeShape EntityType="SIEIModel.Especialidad" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="SIEIModel.Persona" Width="1.5" PointX="7.5" PointY="8.25" />
+        <EntityTypeShape EntityType="SIEIModel.Puesto" Width="1.5" PointX="7.5" PointY="3.625" />
+        <EntityTypeShape EntityType="SIEIModel.Requerimiento" Width="1.5" PointX="9.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SIEIModel.Servicio" Width="1.5" PointX="9.75" PointY="8.625" />
+        <EntityTypeShape EntityType="SIEIModel.Telefono_Empresa" Width="1.5" PointX="5.25" PointY="9.375" />
+        <EntityTypeShape EntityType="SIEIModel.Telefono_Persona" Width="1.5" PointX="9.75" PointY="12.375" />
+        <EntityTypeShape EntityType="SIEIModel.Tipo_Servicio" Width="1.5" PointX="7.5" PointY="13.125" />
+        <EntityTypeShape EntityType="SIEIModel.Ubicacion" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="SIEIModel.Trabaja_En" Width="1.5" PointX="9.75" PointY="1" />
+        <AssociationConnector Association="SIEIModel.FK__Aplica__Identifi__73BA3083" />
+        <AssociationConnector Association="SIEIModel.FK__Aplica__identifi__74AE54BC" />
+        <AssociationConnector Association="SIEIModel.FK__Puesto__idArea__70DDC3D8" />
         <AssociationConnector Association="SIEIModel.FK__Empresa__especia__2B3F6F97" />
         <AssociationConnector Association="SIEIModel.FK__Requerimi__ident__300424B4" />
         <AssociationConnector Association="SIEIModel.FK__Telefono___ident__3F466844" />
-        <AssociationConnector Association="SIEIModel.FK__Servicio__identi__25869641" />
+        <AssociationConnector Association="SIEIModel.FK__Servicio__identi__5FB337D6" />
+        <AssociationConnector Association="SIEIModel.FK__Telefono___ident__22AA2996" />
+        <AssociationConnector Association="SIEIModel.FK__Trabaja_E__idenf__7A672E12" />
+        <AssociationConnector Association="SIEIModel.FK__Puesto__ubicacio__6FE99F9F" />
+        <AssociationConnector Association="SIEIModel.FK__Trabaja_E__ident__7B5B524B" />
+        <AssociationConnector Association="SIEIModel.FK__Servicio__tipoSe__5EBF139D" />
         <AssociationConnector Association="SIEIModel.Requerimientos_Puesto" />
+        <AssociationConnector Association="SIEIModel.Ubicacion_Empresa" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

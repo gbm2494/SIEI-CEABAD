@@ -56,6 +56,7 @@
       <EntityTypeMapping TypeName="SIEIModel.Puesto">
         <MappingFragment StoreEntitySet="Puesto">
           <ScalarProperty Name="idArea" ColumnName="idArea" />
+          <ScalarProperty Name="ubicacionPuesto" ColumnName="ubicacionPuesto" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="identificacion" ColumnName="identificacion" />
@@ -75,6 +76,7 @@
       <EntityTypeMapping TypeName="SIEIModel.Servicio">
         <MappingFragment StoreEntitySet="Servicio">
           <ScalarProperty Name="identificacionPersona" ColumnName="identificacionPersona" />
+          <ScalarProperty Name="tipoServicio" ColumnName="tipoServicio" />
           <ScalarProperty Name="costo" ColumnName="costo" />
           <ScalarProperty Name="imagen" ColumnName="imagen" />
           <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -90,12 +92,52 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Telefono_Persona">
+      <EntityTypeMapping TypeName="SIEIModel.Telefono_Persona">
+        <MappingFragment StoreEntitySet="Telefono_Persona">
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="identificacion" ColumnName="identificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tipo_Servicio">
+      <EntityTypeMapping TypeName="SIEIModel.Tipo_Servicio">
+        <MappingFragment StoreEntitySet="Tipo_Servicio">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ubicacion">
+      <EntityTypeMapping TypeName="SIEIModel.Ubicacion">
+        <MappingFragment StoreEntitySet="Ubicacion">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Trabaja_En">
+      <EntityTypeMapping TypeName="SIEIModel.Trabaja_En">
+        <MappingFragment StoreEntitySet="Trabaja_En">
+          <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="identifcacionPuesto" ColumnName="identifcacionPuesto" />
+          <ScalarProperty Name="idenficacionPersona" ColumnName="idenficacionPersona" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="Requerimientos_Puesto" TypeName="SIEIModel.Requerimientos_Puesto" StoreEntitySet="Requerimientos_Puesto">
       <EndProperty Name="Requerimiento">
         <ScalarProperty Name="identificacion" ColumnName="identificacionReq" />
       </EndProperty>
       <EndProperty Name="Puesto">
         <ScalarProperty Name="identificacion" ColumnName="identificacionPuesto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Ubicacion_Empresa" TypeName="SIEIModel.Ubicacion_Empresa" StoreEntitySet="Ubicacion_Empresa">
+      <EndProperty Name="Ubicacion">
+        <ScalarProperty Name="nombre" ColumnName="ubicacionEmpresa" />
+      </EndProperty>
+      <EndProperty Name="Empresa">
+        <ScalarProperty Name="identificacion" ColumnName="identificacionEmpresa" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

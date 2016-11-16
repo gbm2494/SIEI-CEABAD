@@ -54,6 +54,7 @@
     <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="nombre" Type="varchar" MaxLength="30" />
     <Property Name="descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="ubicacionPuesto" Type="varchar" MaxLength="50" />
     <Property Name="idArea" Type="int" />
   </EntityType>
   <EntityType Name="Requerimiento">
@@ -80,6 +81,7 @@
     <Property Name="descripcion" Type="varchar" MaxLength="200" />
     <Property Name="imagen" Type="varbinary(max)" />
     <Property Name="costo" Type="varchar" MaxLength="20" />
+    <Property Name="tipoServicio" Type="varchar" MaxLength="50" />
     <Property Name="identificacionPersona" Type="varchar" MaxLength="15" />
   </EntityType>
   <EntityType Name="Telefono_Empresa">
@@ -90,7 +92,46 @@
     <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
     <Property Name="numero" Type="varchar" MaxLength="15" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Aplica__Identifi__4CA06362">
+  <EntityType Name="Telefono_Persona">
+    <Key>
+      <PropertyRef Name="identificacion" />
+      <PropertyRef Name="numero" />
+    </Key>
+    <Property Name="identificacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="numero" Type="varchar" MaxLength="15" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Servicio">
+    <Key>
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIEI.dbo.Trabaja_En' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Trabaja_En">
+    <Key>
+      <PropertyRef Name="fechaInicio" />
+    </Key>
+    <Property Name="idenficacionPersona" Type="varchar" MaxLength="15" />
+    <Property Name="identifcacionPuesto" Type="varchar" MaxLength="15" />
+    <Property Name="fechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="fechafinal" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Ubicacion">
+    <Key>
+      <PropertyRef Name="nombre" />
+    </Key>
+    <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ubicacion_Empresa">
+    <Key>
+      <PropertyRef Name="identificacionEmpresa" />
+      <PropertyRef Name="ubicacionEmpresa" />
+    </Key>
+    <Property Name="identificacionEmpresa" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ubicacionEmpresa" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Aplica__Identifi__73BA3083">
     <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
     <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -102,7 +143,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Aplica__identifi__4D94879B">
+  <Association Name="FK__Aplica__identifi__74AE54BC">
     <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
     <End Role="Aplica" Type="Self.Aplica" Multiplicity="*" />
     <ReferentialConstraint>
@@ -126,7 +167,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Puesto__idArea__49C3F6B7">
+  <Association Name="FK__Puesto__idArea__70DDC3D8">
     <End Role="Area_Trabajo" Type="Self.Area_Trabajo" Multiplicity="0..1" />
     <End Role="Puesto" Type="Self.Puesto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -135,6 +176,18 @@
       </Principal>
       <Dependent Role="Puesto">
         <PropertyRef Name="idArea" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Puesto__ubicacio__6FE99F9F">
+    <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="0..1" />
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ubicacion">
+        <PropertyRef Name="nombre" />
+      </Principal>
+      <Dependent Role="Puesto">
+        <PropertyRef Name="ubicacionPuesto" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -150,7 +203,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Requerimi__ident__5070F446">
+  <Association Name="FK__Requerimi__ident__778AC167">
     <End Role="Puesto" Type="Self.Puesto" Multiplicity="1" />
     <End Role="Requerimientos_Puesto" Type="Self.Requerimientos_Puesto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -162,7 +215,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Requerimi__ident__5165187F">
+  <Association Name="FK__Requerimi__ident__787EE5A0">
     <End Role="Requerimiento" Type="Self.Requerimiento" Multiplicity="1" />
     <End Role="Requerimientos_Puesto" Type="Self.Requerimientos_Puesto" Multiplicity="*" />
     <ReferentialConstraint>
@@ -174,7 +227,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Servicio__identi__25869641">
+  <Association Name="FK__Servicio__identi__5FB337D6">
     <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
     <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
     <ReferentialConstraint>
@@ -183,6 +236,30 @@
       </Principal>
       <Dependent Role="Servicio">
         <PropertyRef Name="identificacionPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Servicio__tipoSe__5EBF139D">
+    <End Role="Tipo_Servicio" Type="Self.Tipo_Servicio" Multiplicity="0..1" />
+    <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Servicio">
+        <PropertyRef Name="nombre" />
+      </Principal>
+      <Dependent Role="Servicio">
+        <PropertyRef Name="tipoServicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Telefono___ident__22AA2996">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+    <End Role="Telefono_Persona" Type="Self.Telefono_Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Telefono_Persona">
+        <PropertyRef Name="identificacion" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -198,6 +275,54 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__Trabaja_E__idenf__7A672E12">
+    <End Role="Persona" Type="Self.Persona" Multiplicity="0..1" />
+    <End Role="Trabaja_En" Type="Self.Trabaja_En" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Trabaja_En">
+        <PropertyRef Name="idenficacionPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Trabaja_E__ident__7B5B524B">
+    <End Role="Puesto" Type="Self.Puesto" Multiplicity="0..1" />
+    <End Role="Trabaja_En" Type="Self.Trabaja_En" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Puesto">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Trabaja_En">
+        <PropertyRef Name="identifcacionPuesto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ubicacion__ident__656C112C">
+    <End Role="Empresa" Type="Self.Empresa" Multiplicity="1" />
+    <End Role="Ubicacion_Empresa" Type="Self.Ubicacion_Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empresa">
+        <PropertyRef Name="identificacion" />
+      </Principal>
+      <Dependent Role="Ubicacion_Empresa">
+        <PropertyRef Name="identificacionEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Ubicacion__ubica__66603565">
+    <End Role="Ubicacion" Type="Self.Ubicacion" Multiplicity="1" />
+    <End Role="Ubicacion_Empresa" Type="Self.Ubicacion_Empresa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ubicacion">
+        <PropertyRef Name="nombre" />
+      </Principal>
+      <Dependent Role="Ubicacion_Empresa">
+        <PropertyRef Name="ubicacionEmpresa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="SIEIModelStoreContainer">
     <EntitySet Name="Aplica" EntityType="Self.Aplica" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Area_Trabajo" EntityType="Self.Area_Trabajo" Schema="dbo" store:Type="Tables" />
@@ -209,11 +334,23 @@
     <EntitySet Name="Requerimientos_Puesto" EntityType="Self.Requerimientos_Puesto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Telefono_Empresa" EntityType="Self.Telefono_Empresa" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Aplica__Identifi__4CA06362" Association="Self.FK__Aplica__Identifi__4CA06362">
+    <EntitySet Name="Telefono_Persona" EntityType="Self.Telefono_Persona" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Servicio" EntityType="Self.Tipo_Servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ubicacion" EntityType="Self.Ubicacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ubicacion_Empresa" EntityType="Self.Ubicacion_Empresa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trabaja_En" EntityType="Self.Trabaja_En" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Trabaja_En].[idenficacionPersona] AS [idenficacionPersona], 
+    [Trabaja_En].[identifcacionPuesto] AS [identifcacionPuesto], 
+    [Trabaja_En].[fechaInicio] AS [fechaInicio], 
+    [Trabaja_En].[fechafinal] AS [fechafinal]
+    FROM [dbo].[Trabaja_En] AS [Trabaja_En]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__Aplica__Identifi__73BA3083" Association="Self.FK__Aplica__Identifi__73BA3083">
       <End Role="Persona" EntitySet="Persona" />
       <End Role="Aplica" EntitySet="Aplica" />
     </AssociationSet>
-    <AssociationSet Name="FK__Aplica__identifi__4D94879B" Association="Self.FK__Aplica__identifi__4D94879B">
+    <AssociationSet Name="FK__Aplica__identifi__74AE54BC" Association="Self.FK__Aplica__identifi__74AE54BC">
       <End Role="Puesto" EntitySet="Puesto" />
       <End Role="Aplica" EntitySet="Aplica" />
     </AssociationSet>
@@ -221,29 +358,57 @@
       <End Role="Especialidad" EntitySet="Especialidad" />
       <End Role="Empresa" EntitySet="Empresa" />
     </AssociationSet>
-    <AssociationSet Name="FK__Puesto__idArea__49C3F6B7" Association="Self.FK__Puesto__idArea__49C3F6B7">
+    <AssociationSet Name="FK__Puesto__idArea__70DDC3D8" Association="Self.FK__Puesto__idArea__70DDC3D8">
       <End Role="Area_Trabajo" EntitySet="Area_Trabajo" />
+      <End Role="Puesto" EntitySet="Puesto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Puesto__ubicacio__6FE99F9F" Association="Self.FK__Puesto__ubicacio__6FE99F9F">
+      <End Role="Ubicacion" EntitySet="Ubicacion" />
       <End Role="Puesto" EntitySet="Puesto" />
     </AssociationSet>
     <AssociationSet Name="FK__Requerimi__ident__300424B4" Association="Self.FK__Requerimi__ident__300424B4">
       <End Role="Empresa" EntitySet="Empresa" />
       <End Role="Requerimiento" EntitySet="Requerimiento" />
     </AssociationSet>
-    <AssociationSet Name="FK__Requerimi__ident__5070F446" Association="Self.FK__Requerimi__ident__5070F446">
+    <AssociationSet Name="FK__Requerimi__ident__778AC167" Association="Self.FK__Requerimi__ident__778AC167">
       <End Role="Puesto" EntitySet="Puesto" />
       <End Role="Requerimientos_Puesto" EntitySet="Requerimientos_Puesto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Requerimi__ident__5165187F" Association="Self.FK__Requerimi__ident__5165187F">
+    <AssociationSet Name="FK__Requerimi__ident__787EE5A0" Association="Self.FK__Requerimi__ident__787EE5A0">
       <End Role="Requerimiento" EntitySet="Requerimiento" />
       <End Role="Requerimientos_Puesto" EntitySet="Requerimientos_Puesto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Servicio__identi__25869641" Association="Self.FK__Servicio__identi__25869641">
+    <AssociationSet Name="FK__Servicio__identi__5FB337D6" Association="Self.FK__Servicio__identi__5FB337D6">
       <End Role="Persona" EntitySet="Persona" />
       <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Servicio__tipoSe__5EBF139D" Association="Self.FK__Servicio__tipoSe__5EBF139D">
+      <End Role="Tipo_Servicio" EntitySet="Tipo_Servicio" />
+      <End Role="Servicio" EntitySet="Servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Telefono___ident__22AA2996" Association="Self.FK__Telefono___ident__22AA2996">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Telefono_Persona" EntitySet="Telefono_Persona" />
     </AssociationSet>
     <AssociationSet Name="FK__Telefono___ident__3F466844" Association="Self.FK__Telefono___ident__3F466844">
       <End Role="Empresa" EntitySet="Empresa" />
       <End Role="Telefono_Empresa" EntitySet="Telefono_Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trabaja_E__idenf__7A672E12" Association="Self.FK__Trabaja_E__idenf__7A672E12">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Trabaja_En" EntitySet="Trabaja_En" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Trabaja_E__ident__7B5B524B" Association="Self.FK__Trabaja_E__ident__7B5B524B">
+      <End Role="Puesto" EntitySet="Puesto" />
+      <End Role="Trabaja_En" EntitySet="Trabaja_En" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ubicacion__ident__656C112C" Association="Self.FK__Ubicacion__ident__656C112C">
+      <End Role="Empresa" EntitySet="Empresa" />
+      <End Role="Ubicacion_Empresa" EntitySet="Ubicacion_Empresa" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Ubicacion__ubica__66603565" Association="Self.FK__Ubicacion__ubica__66603565">
+      <End Role="Ubicacion" EntitySet="Ubicacion" />
+      <End Role="Ubicacion_Empresa" EntitySet="Ubicacion_Empresa" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -12,29 +12,20 @@ namespace SIEI.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Puesto
+    public partial class Ubicacion
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Puesto()
+        public Ubicacion()
         {
-            this.Aplica = new HashSet<Aplica>();
-            this.Trabaja_En = new HashSet<Trabaja_En>();
-            this.Requerimiento = new HashSet<Requerimiento>();
+            this.Puesto = new HashSet<Puesto>();
+            this.Empresa = new HashSet<Empresa>();
         }
     
-        public string identificacion { get; set; }
         public string nombre { get; set; }
-        public string descripcion { get; set; }
-        public string ubicacionPuesto { get; set; }
-        public Nullable<int> idArea { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Aplica> Aplica { get; set; }
-        public virtual Area_Trabajo Area_Trabajo { get; set; }
-        public virtual Ubicacion Ubicacion { get; set; }
+        public virtual ICollection<Puesto> Puesto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Trabaja_En> Trabaja_En { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Requerimiento> Requerimiento { get; set; }
+        public virtual ICollection<Empresa> Empresa { get; set; }
     }
 }
