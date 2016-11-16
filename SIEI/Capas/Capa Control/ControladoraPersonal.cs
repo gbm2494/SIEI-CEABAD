@@ -41,5 +41,19 @@ namespace SIEI.Capas.Capa_Control
             return controladoraBDPersonas.actualizarContrasena(password);
         }
 
+        /**/
+
+        public void eliminarTelefonosActuales(string identificacion)
+        {
+            controladoraBDPersonas.eliminarTelefonosActuales(identificacion);
+        }
+
+        /**/
+        public Boolean guardarTelefonoUsuarioLogueado(object[] datos)
+        {
+            EntidadTelefono_Persona nuevo = new EntidadTelefono_Persona(datos);
+            return controladoraBDPersonas.guardarTelefonoUsuarioLogueado(nuevo);
+        }
+
     }
 }

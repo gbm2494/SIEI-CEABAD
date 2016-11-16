@@ -18,12 +18,6 @@ namespace SIEI.Capas.Capa_Entidad
         private byte[] curriculo;
         private Boolean discapacidad;
 
-        /*
-         */
-        public EntidadPersona(string identificacion, string id, string nombre, string ape1, string ape2, string email, byte[] cv, Boolean disc)
-        {
-
-        }
 
         /*
          */

@@ -58,6 +58,7 @@ namespace SIEI
                     //hay curriculo cargado
                     if (resultado[6] != null)
                     {
+                        fileUploadCurriculo.fi
                     }
                 }
 
@@ -113,10 +114,35 @@ namespace SIEI
         }
 
         /**/
+        protected void actualizarTelefonos()
+        {
+            controladoraPersonas.eliminarTelefonosActuales(txtIdentificacion.Text);
+
+            if (txtTelefono.Text != "")
+            {
+                object[] datos = new object[2];
+                datos[0] = txtIdentificacion.Text;
+                datos[1] = txtTelefono.Text;
+
+                controladoraPersonas.guardarTelefonoUsuarioLogueado(datos);
+            }
+
+            if (txtTelefono2.Text != "")
+            {
+                object[] datos2 = new object[2];
+                datos2[0] = txtIdentificacion.Text;
+                datos2[1] = txtTelefono2.Text;
+
+                controladoraPersonas.guardarTelefonoUsuarioLogueado(datos2);
+            }
+        }
+
+        /**/
         protected void btnActualizar(object sender, EventArgs e)
         {
             actualizarPersona();
             actualizarContrasena();
+            actualizarTelefonos();
         }
     }
 }

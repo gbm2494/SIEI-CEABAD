@@ -68,13 +68,21 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
 
             var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            IdentityResult resultado = manager.AddPassword(HttpContext.Current.User.Identity.GetUserId(), password);
+            IdentityResult resultado2 = manager.RemovePassword(HttpContext.Current.User.Identity.GetUserId());
 
-            if (resultado.Succeeded)
+            if (resultado2.Succeeded)
             {
-                result = true;
-            }
+                IdentityResult resultado = manager.AddPassword(HttpContext.Current.User.Identity.GetUserId(), password);
 
+                if (resultado.Succeeded)
+                {
+                    result = true;
+                }
+                else
+                {
+                    result = false;
+                }
+            }
             return result;
         }
 
@@ -99,6 +107,41 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
 
             return retorno;
 
+        }
+
+        /**/
+        public void eliminarTelefonosActuales(string identificacion)
+        {
+            List<Telefono_Persona> listaNumeros = bd.Telefono_Persona.Where(x => x.identificacion == identificacion).ToList();
+
+            for (int i = 0; i < listaNumeros.Count; i++)
+            {
+                bd.Telefono_Persona.Remove(listaNumeros.ElementAt(i));
+                bd.SaveChanges();
+            }
+        }
+
+        /**/
+        public Boolean guardarTelefonoUsuarioLogueado(EntidadTelefono_Persona nueva)
+        {
+            Boolean resultado = false;
+
+            Telefono_Persona nuevoTelefono = new Telefono_Persona(nueva);
+
+            try
+            {
+                
+                bd.Telefono_Persona.Add(nuevoTelefono);
+                bd.SaveChanges();
+
+                resultado = true;
+            }
+            catch (Exception e)
+            {
+                resultado = false;
+            }
+
+            return resultado;
         }
     }
 }
