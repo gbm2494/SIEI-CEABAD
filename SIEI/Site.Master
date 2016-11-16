@@ -40,7 +40,7 @@
         </asp:ScriptManager>
 
 
-        <img runat="server" id="imgHeader" src="http://www.vendee-tourisme.com/media/tourismethandicapheader__098842900_1450_16092016.jpg" />
+        <img runat="server" id="imgHeader" src="/Img/header.jpg" />
 
         <div runat="server" id="aNav" class="navbar navbar-inverse navbar-fixed-top myNav ">
             <!-- navbar-fixed-top-->

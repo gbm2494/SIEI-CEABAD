@@ -11,6 +11,12 @@ body {
     margin: 0;
 }
 
+.myJumbo {
+padding-bottom: 1em !important;
+margin-bottom: 0.6em;
+
+}
+
 .logo {
     font-size: 2em;
     color: white !important;
@@ -23,7 +29,7 @@ body {
     text-align: center;
     color: white;
     margin-top: 2em !important;
-     width: 100% !important;
+    width: 100% !important;
 }
 
 
