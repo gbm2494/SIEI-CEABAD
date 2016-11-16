@@ -119,7 +119,7 @@
 
 
             </div>
-            <div class="form-horizontal col-md-4">
+            <div class="form-horizontal col-md-6">
                 <h4>&nbsp;</h4>
                 <hr />
                 <asp:ValidationSummary runat="server" CssClass="text-danger" />
@@ -144,22 +144,26 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class=" col-md-10">
-                            <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-default" />
-                        </div>
-
-                    </div>
-                </div>
-                  <div class="form-group">
+                 <div class="form-group">
                             <div class="row">
-                               <strong> <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognocitiva? La información no será suministrada." CssClass="col-md-5 control-label"></asp:Label></strong>
+                               <strong> <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognoscitiva? La información no será suministrada a las empresas." CssClass="col-md-6 control-label"></asp:Label></strong>
                           <asp:CheckBox runat="server" CssClass="col-md-1  control-label"></asp:CheckBox>
 
                             </div>
 
                         </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class=" col-md-9">
+                            <div style="float:right">
+                            <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-default" />
+                        </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                 
             </div>
 
          </div>
