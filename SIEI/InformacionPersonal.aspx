@@ -110,15 +110,7 @@
                         </div>
 
                     </div>
-                        <div class="form-group">
-                            <div class="row">
-
-                                <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognocitiva? La información no será suministrada." CssClass="col-md-3 control-label"></asp:Label></strong>
-                          <asp:CheckBox runat="server" CssClass="col-md-1  control-label"></asp:CheckBox>
-
-                            </div>
-
-                        </div>
+                      
 
 
                     </ContentTemplate>
@@ -160,6 +152,14 @@
 
                     </div>
                 </div>
+                  <div class="form-group">
+                            <div class="row">
+                               <strong> <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognocitiva? La información no será suministrada." CssClass="col-md-5 control-label"></asp:Label></strong>
+                          <asp:CheckBox runat="server" CssClass="col-md-1  control-label"></asp:CheckBox>
+
+                            </div>
+
+                        </div>
             </div>
 
          </div>

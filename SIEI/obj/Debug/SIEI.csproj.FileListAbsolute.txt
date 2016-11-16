@@ -74,7 +74,6 @@ c:\users\devmyrrie\documents\visual studio 2015\Projects\SIEI\SIEI\bin\Microsoft
 c:\users\devmyrrie\documents\visual studio 2015\Projects\SIEI\SIEI\bin\Microsoft.Owin.Security.Twitter.xml
 c:\users\devmyrrie\documents\visual studio 2015\Projects\SIEI\SIEI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\devmyrrie\documents\visual studio 2015\Projects\SIEI\SIEI\bin\Microsoft.Owin.Security.OAuth.xml
-c:\users\devmyrrie\documents\visual studio 2015\Projects\SIEI\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache
 c:\users\devmyrrie\documents\visual studio 2015\Projects\SIEI\SIEI\obj\Debug\SIEI.dll
 c:\users\devmyrrie\documents\visual studio 2015\Projects\SIEI\SIEI\obj\Debug\SIEI.pdb
 C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\bin\ApplicationInsights.config

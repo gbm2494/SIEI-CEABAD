@@ -130,15 +130,6 @@ namespace SIEI {
         protected global::System.Web.UI.WebControls.LinkButton lnkQuitar;
         
         /// <summary>
-        /// disc control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label disc;
-        
-        /// <summary>
         /// txtCorreo control.
         /// </summary>
         /// <remarks>
@@ -155,5 +146,14 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPassword;
+        
+        /// <summary>
+        /// disc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label disc;
     }
 }
