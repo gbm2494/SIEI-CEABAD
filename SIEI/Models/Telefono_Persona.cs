@@ -11,6 +11,7 @@ namespace SIEI.Models
 {
     using System;
     using System.Collections.Generic;
+    using SIEI.Capas.Capa_Entidad;
     
     public partial class Telefono_Persona
     {
@@ -18,5 +19,15 @@ namespace SIEI.Models
         public string numero { get; set; }
     
         public virtual Persona Persona { get; set; }
+
+        public Telefono_Persona(EntidadTelefono_Persona nueva)
+        {
+            identificacion = nueva.getIdentificacion;
+            numero = nueva.getNumero;
+        }
+
+        public Telefono_Persona()
+        {
+        }
     }
 }

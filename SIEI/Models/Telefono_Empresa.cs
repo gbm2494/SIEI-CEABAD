@@ -18,5 +18,7 @@ namespace SIEI.Models
         public string numero { get; set; }
     
         public virtual Empresa Empresa { get; set; }
+
+        
     }
 }

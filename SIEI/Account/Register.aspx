@@ -2,31 +2,28 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
-    
 
 
-    <div class =" text-center">
-    <h2 style="padding-top:3em"><%: Title %></h2>
-    <p class="text-danger">
-        <asp:Literal runat="server" ID="ErrorMessage" Visible="false" />
-    </p>
-    </div>
-    <div class="form-horizontal text-center">
+<div class=" text-center">
+        <h2 style="padding-top: 3em"><%: Title %></h2>
+        <p class="text-danger">
+            <asp:Literal runat="server" ID="ErrorMessage" Visible="false" />
+        </p>
+    </div>    <div class="form-horizontal text-center">
         <h4>Crea tu cuenta</h4>
         <hr />
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
-         <script type = "text/javascript">
-        function removeHeader()
-        {
-            document.getElementById("aNav").className =
-                document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
-            document.getElementById("imgHeader").style.display = "none";
-            document.getElementById("regPers").style.fontSize = "1em";
-            document.getElementById("regEmp").style.fontSize = "1em";
-        }
-        removeHeader();
-    </script> 
+        <script type="text/javascript">
+            function removeHeader() {
+                document.getElementById("aNav").className =
+                    document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
+                document.getElementById("imgHeader").style.display = "none";
+                document.getElementById("regPers").style.fontSize = "1em";
+                document.getElementById("regEmp").style.fontSize = "1em";
+            }
+            removeHeader();
+        </script>
 
         <div class="row">
             <div class="col-md-8 col-md-offset-3">
@@ -35,9 +32,9 @@
                     <div id="error" runat="server" class="alert alert-danger" style="display: none">
                         <strong>Error!</strong> La identificación y/o correo de la persona ya se encuentran registrados en el sistema.
                     </div>
-                    <div ID="errorPassword" runat="server" class="alert alert-danger" style="display:none">
-                <strong>Error!</strong> La contraseña no tiene el formato correcto: mínimo 6 caracteres, letras mayúsculas, minúsculas, números y caracteres especiales.
-            </div>
+                    <div id="errorPassword" runat="server" class="alert alert-danger" style="display: none">
+                        <strong>Error!</strong> La contraseña no tiene el formato correcto: mínimo 6 caracteres, letras mayúsculas, minúsculas, números y caracteres especiales.
+                    </div>
                     <div id="check" runat="server" class="alert alert-success" style="display: none">
                         <strong>Éxito!</strong> La persona fue registrada en el sistema.
                     </div>
@@ -99,15 +96,11 @@
                 </div>
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-offset-1 col-md-10">
+                <asp:Button runat="server" OnClick="CreateUser_Click" Text="Registrar" CssClass="btn btn-default" />
+            </div>
+        </div>
 
-
-       
-
-                <div class="form-group">
-                    <div class="col-md-offset-1 col-md-10">
-                        <asp:Button runat="server" OnClick="CreateUser_Click" Text="Registrar" CssClass="btn btn-default" />
-                    </div>
-                </div>
-         
     </div>
 </asp:Content>

@@ -40,7 +40,7 @@
         </asp:ScriptManager>
 
 
-        <img runat="server" id="imgHeader" src="/Img/header.jpg" />
+        <img runat="server" id="imgHeader" src="/Img/newHeader.jpg" />
 
         <div runat="server" id="aNav" class="navbar navbar-inverse navbar-fixed-top myNav ">
             <!-- navbar-fixed-top-->
@@ -55,6 +55,15 @@
 
             <div class="navbar-collapse collapse">
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <AnonymousTemplate>
+                        <ul id="opcNav" class="nav navbar-nav nvb">
+
+                            <li><a id="regPers"  style="font-size:1em" runat ="server" href="~/Account/Register">Registrar persona</a></li>
+                            <li><a id="regEmpr"  style="font-size:1em" runat="server" href="~/Account/RegistrarEmpresa">Registrar Empresa</a></li>
+
+                        </ul>
+                    </AnonymousTemplate>
+
                     <LoggedInTemplate>
                         <ul id="opcNav" class="nav navbar-nav nvb">
 
@@ -102,9 +111,9 @@
                     </AnonymousTemplate>
                     <LoggedInTemplate>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                            <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hola, <%: Context.User.Identity.GetUserName()  %> !</a></li>
                             <li>
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                             </li>
                         </ul>
                     </LoggedInTemplate>

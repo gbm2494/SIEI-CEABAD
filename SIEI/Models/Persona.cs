@@ -12,9 +12,15 @@ namespace SIEI.Models
     using System;
     using System.Collections.Generic;
     using SIEI.Capas.Capa_Entidad;
+    using System.Web.Providers.Entities;
+    using Microsoft.AspNet.Identity;
+    using System.Web;
+    using System.IO;
 
     public partial class Persona
     {
+        ApplicationDbContext context = new ApplicationDbContext();
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Persona()
         {
@@ -31,6 +37,19 @@ namespace SIEI.Models
             id = nuevaPersona.getId;
             correo = nuevaPersona.getCorreo;
 
+        }
+
+        public Persona(EntidadPersona nuevaPersona, Boolean actualizar)
+        {
+            
+            identificacion = nuevaPersona.getIdentificacion;
+            id = HttpContext.Current.User.Identity.GetUserId();
+            nombre = nuevaPersona.getNombre;
+            apellido1 = nuevaPersona.getApellido1;
+            apellido2 = nuevaPersona.getApellido2;
+            correo = nuevaPersona.getCorreo;
+            discapacidad = nuevaPersona.getDiscapacidad;
+            curriculo = nuevaPersona.getCurriculo;
         }
 
         public string identificacion { get; set; }
