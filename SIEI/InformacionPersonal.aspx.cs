@@ -7,12 +7,14 @@ using System.Web.UI.WebControls;
 using System.IO;
 using SIEI.Models;
 using SIEI.Capas.Capa_Control;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SIEI
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
         ControladoraPersonal controladoraPersonas = new ControladoraPersonal();
+        byte[] curriculo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -26,6 +28,7 @@ namespace SIEI
                 {
                     object[] resultado = controladoraPersonas.obtenerDatosPersonaLoggeada();
 
+                    
                     //en la posición 0 del objeto viene la identificación
                     txtIdentificacion.Text = resultado[0].ToString();
 
@@ -58,11 +61,25 @@ namespace SIEI
                     //hay curriculo cargado
                     if (resultado[6] != null)
                     {
-                        fileUploadCurriculo.fi
+                        lnkDownload.Text = "curriculo.pdf";
+
+                        curriculo = controladoraPersonas.obtenerCurriculoLoggeado();
+                    }
+
+                    object[] telefonos = controladoraPersonas.obtenerTelefonos(txtIdentificacion.Text);
+
+                    if (telefonos[0] != null)
+                    {
+                        txtTelefono.Text = telefonos[0].ToString();
+                    }
+
+                    if (telefonos[1] != null)
+                    {
+                        txtTelefono2.Text = telefonos[1].ToString();
                     }
                 }
 
-                
+
 
             }
 
@@ -73,21 +90,25 @@ namespace SIEI
         {
             //actualizar datos persona
             object[] datosPersona = new object[7];
-            /*
+
             datosPersona[0] = txtIdentificacion.Text;
             datosPersona[1] = txtNombre.Text;
             datosPersona[2] = txtApellido.Text;
             datosPersona[3] = txtApellido2.Text;
             datosPersona[4] = chkDiscapacidad.Checked; //REVISAR
             datosPersona[5] = txtCorreo.Text;
-            */
-           // controladoraPersonas.actualizarPersona(datosPersona);
 
-            Stream fs = fileUploadCurriculo.PostedFile.InputStream;
-            BinaryReader br = new BinaryReader(fs);
-            byte[] archivo = br.ReadBytes((Int32)fs.Length);
-
-            datosPersona[6] = archivo;
+            if (!lnkDownload.Text.Contains("pdf"))
+            {
+                Stream fs = fileUploadCurriculo.PostedFile.InputStream;
+                BinaryReader br = new BinaryReader(fs);
+                byte[] archivo = br.ReadBytes((Int32)fs.Length);
+                datosPersona[6] = archivo;
+            }
+            else {
+                datosPersona[6] = null;
+            }
+                
 
             if (controladoraPersonas.actualizarPersona(datosPersona))
             {
@@ -144,6 +165,17 @@ namespace SIEI
             actualizarPersona();
             actualizarContrasena();
             actualizarTelefonos();
+        }
+
+        /**/
+        protected void DownloadFile(object sender, EventArgs e)
+        {
+            Response.Clear();
+            Response.ContentType = "text/plain";
+            Response.AppendHeader("Content-Disposition", "attachment; curriculo.pdf");
+            Response.BinaryWrite(curriculo);
+            Response.Flush();
+            Response.End();
         }
     }
 }

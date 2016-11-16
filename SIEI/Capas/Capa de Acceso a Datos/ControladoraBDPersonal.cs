@@ -42,6 +42,8 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             return resultado;
         }
 
+        /**/
+        public Boolean modificarPersona(EntidadPersona actualizada)
         {
             Boolean resultado = false;
 
@@ -58,7 +60,8 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             }
             return resultado;
         }
- /**/
+
+        /**/
         public Boolean actualizarContrasena(string password)
         {
             Boolean result = false;
@@ -107,6 +110,34 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
         }
 
         /**/
+        public byte[] obtenerCurriculoLoggeado()
+        {
+            string id = HttpContext.Current.User.Identity.GetUserId();
+
+            List<Persona> persona = bd.Persona.Where(x => x.id == id).ToList();
+
+            Persona resultado = persona.FirstOrDefault();
+
+            return resultado.curriculo;
+        }
+
+        /**/
+        public object[] obtenerTelefonos(string identificacion)
+        {
+
+            List<Telefono_Persona> telefonos = bd.Telefono_Persona.Where(x => x.identificacion == identificacion).ToList();
+
+            object[] retorno = new object[2];
+
+            for(int i = 0; i < telefonos.Count; i++)
+            {
+                retorno[i] = telefonos.ElementAt(i).numero;
+            }
+
+            return retorno;
+        }
+
+        /**/
         public void eliminarTelefonosActuales(string identificacion)
         {
             List<Telefono_Persona> listaNumeros = bd.Telefono_Persona.Where(x => x.identificacion == identificacion).ToList();
@@ -139,5 +170,6 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             }
 
             return resultado;
-        }    }
+        }
+    }
 }
