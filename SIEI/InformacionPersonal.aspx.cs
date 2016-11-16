@@ -22,48 +22,53 @@ namespace SIEI
             }
             else {
 
-                object[] resultado = controladoraPersonas.obtenerDatosPersonaLoggeada();
-
-                //en la posición 0 del objeto viene la identificación
-                txtIdentificacion.Text = resultado[0].ToString();
-
-                //posición 1 nombre
-                if (resultado[1] != null)
+                if (!IsPostBack)
                 {
-                    txtNombre.Text = resultado[1].ToString();
+                    object[] resultado = controladoraPersonas.obtenerDatosPersonaLoggeada();
+
+                    //en la posición 0 del objeto viene la identificación
+                    txtIdentificacion.Text = resultado[0].ToString();
+
+                    //posición 1 nombre
+                    if (resultado[1] != null)
+                    {
+                        txtNombre.Text = resultado[1].ToString();
+                    }
+
+                    if (resultado[2] != null)
+                    {
+                        txtApellido.Text = resultado[2].ToString();
+                    }
+
+                    if (resultado[3] != null)
+                    {
+                        txtApellido2.Text = resultado[3].ToString();
+                    }
+
+                    if (resultado[4] != null)
+                    {
+                        chkDiscapacidad.Checked = Convert.ToBoolean(resultado[4]);
+                    }
+
+                    if (resultado[5] != null)
+                    {
+                        txtCorreo.Text = resultado[5].ToString();
+                    }
+
+                    //hay curriculo cargado
+                    if (resultado[6] != null)
+                    {
+                    }
                 }
 
-                if (resultado[2] != null)
-                {
-                    txtApellido.Text = resultado[2].ToString();
-                }
-
-                if (resultado[3] != null)
-                {
-                    txtApellido2.Text = resultado[3].ToString();
-                }
-
-                if (resultado[4] != null)
-                {
-                    chkDiscapacidad.Checked = Convert.ToBoolean(resultado[4]);
-                }
-
-                if (resultado[5] != null)
-                {
-                    txtCorreo.Text = resultado[5].ToString();
-                }
-
-                //hay curriculo cargado
-                if (resultado[6] != null)
-                {
-                }
+                
 
             }
 
         }
 
-
-        public void actualizar()
+        /**/
+        public void actualizarPersona()
         {
             //actualizar datos persona
             object[] datosPersona = new object[7];
@@ -82,16 +87,36 @@ namespace SIEI
 
             datosPersona[6] = archivo;
 
-            controladoraPersonas.actualizarPersona(datosPersona);
+            if (controladoraPersonas.actualizarPersona(datosPersona))
+            {
+                check.Style.Clear();
+            }
 
             //actualizar contraseña
+
+            
 
             //actualizar telefonos
         }
 
+        /**/
+        public Boolean actualizarContrasena()
+        {
+            if (txtPassword.Text != "" && txtConfirm.Text != "")
+            {
+                return controladoraPersonas.actualizarContrasena(txtConfirm.Text);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        /**/
         protected void btnActualizar(object sender, EventArgs e)
         {
-            actualizar();
+            actualizarPersona();
+            actualizarContrasena();
         }
     }
 }

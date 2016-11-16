@@ -6,8 +6,7 @@ using SIEI.Capas.Capa_Entidad;
 using SIEI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System.Data.Entity;
-
+using Microsoft.AspNet.Identity.Owin;
 
 namespace SIEI.Capas.Capa_de_Acceso_a_Datos
 {
@@ -48,24 +47,38 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
         {
             Boolean resultado = false;
 
+            var original = bd.Persona.Find(actualizada.getIdentificacion);
+
             Persona nuevaPersona = new Persona(actualizada, true);
 
-            try
+            if (original != null)
             {
-                bd.Entry(nuevaPersona).State = EntityState.Modified;
+                bd.Entry(original).CurrentValues.SetValues(nuevaPersona);
                 bd.SaveChanges();
-                resultado = true;
-            }
-            catch (Exception e)
-            {
+
                 resultado = false;
             }
-
             return resultado;
         }
 
         /**/
+        public Boolean actualizarContrasena(string password)
+        {
+            Boolean result = false;
 
+            var manager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
+
+            IdentityResult resultado = manager.AddPassword(HttpContext.Current.User.Identity.GetUserId(), password);
+
+            if (resultado.Succeeded)
+            {
+                result = true;
+            }
+
+            return result;
+        }
+
+        /**/
         public object[] obtenerDatosPersonaLoggeada()
         {
             string id = HttpContext.Current.User.Identity.GetUserId();
