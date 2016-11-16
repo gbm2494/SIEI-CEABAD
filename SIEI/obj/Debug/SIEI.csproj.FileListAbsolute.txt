@@ -312,3 +312,4 @@ C:\Users\ucr\Desktop\doc\SIEI-CEABAD\SIEI\obj\Debug\SIEI.pdb
 C:\Users\ucr\Desktop\doc\SIEI-CEABAD\SIEI\bin\SIEI.dll.config
 C:\Users\ucr\Desktop\doc\SIEI-CEABAD\SIEI\bin\SIEI.dll
 C:\Users\ucr\Desktop\doc\SIEI-CEABAD\SIEI\bin\SIEI.pdb
+C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache

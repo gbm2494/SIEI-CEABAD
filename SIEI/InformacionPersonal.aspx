@@ -31,8 +31,8 @@
                         <asp:Label runat="server" AssociatedControlID="txtIdentificacion" CssClass="col-md-3 control-label">Identificación:</asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control" MaxLength="15" />
-                            <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtIdentificacion"
-                                CssClass="text-danger" ErrorMessage="La identificación es un campo requerido." />--%>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtIdentificacion"
+                                CssClass="text-danger" ErrorMessage="La identificación es un campo requerido." />
                         </div>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                         <asp:Label runat="server" AssociatedControlID="txtNombre" CssClass="col-md-3 control-label">Nombre:</asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" MaxLength="15" />
-                            <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtNombre"
-                                CssClass="text-danger" ErrorMessage="El nombre es un campo requerido." />--%>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNombre"
+                                CssClass="text-danger" ErrorMessage="El nombre es un campo requerido." />
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@
                         <asp:Label runat="server" AssociatedControlID="txtApellido" CssClass="col-md-3 control-label">Primer apellido:</asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" MaxLength="15" />
-                            <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtApellido"
-                                CssClass="text-danger" ErrorMessage="El Apellido es un campo requerido." />--%>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtApellido"
+                                CssClass="text-danger" ErrorMessage="El Apellido es un campo requerido." />
                         </div>
                     </div>
                 </div>
@@ -67,8 +67,8 @@
                         <asp:Label runat="server" AssociatedControlID="txtApellido2" CssClass="col-md-3 control-label">Segundo apellido:</asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox runat="server" ID="txtApellido2" CssClass="form-control" MaxLength="15" />
-                            <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtApellido2"
-                                CssClass="text-danger" ErrorMessage="El segundo apellido es un campo requerido." />--%>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtApellido2"
+                                CssClass="text-danger" ErrorMessage="El segundo apellido es un campo requerido." />
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                                             ForeColor="Red" ValidationExpression="^[0-9]*"> </asp:RegularExpressionValidator>
                                     </div>
                                     <div class="col-md-1">
-                                        <asp:LinkButton runat="server" ID="lnkNumero" CssClass="glyphicon.glyphicon-plus-sign" OnClick="lnkNumero_Click">
+                                        <asp:LinkButton runat="server" ID="lnkNumero" CssClass="glyphicon.glyphicon-plus-sign" >
                                         <span aria-hidden="true" class="glyphicon glyphicon-plus-sign blueColor"></span>
                                         </asp:LinkButton>
                                     </div>
@@ -125,8 +125,8 @@
                         <asp:Label runat="server" AssociatedControlID="txtCorreo" CssClass="col-md-3 control-label">Correo:</asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control" MaxLength="15" />
-                            <%--<asp:RequiredFieldValidator runat="server" ControlToValidate="txtCorreo"
-                                CssClass="text-danger" ErrorMessage="El correo es un campo requerido." />--%>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCorreo"
+                                CssClass="text-danger" ErrorMessage="El correo es un campo requerido." />
                         </div>
                     </div>
 
