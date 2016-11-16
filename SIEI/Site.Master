@@ -52,9 +52,12 @@
                 </button>
                 <a class="navbar-brand logo" runat="server" href="~/">SIEI</a>
             </div>
+            
             <div class="navbar-collapse collapse">
+                <LoggedInTemplate>
                 <ul id="opcNav" class="nav navbar-nav nvb">
-                    <%if (Session["Role"] != null && Session["Role"].ToString() == "Persona")
+                     
+                     <%if (Session["Role"] != null && Session["Role"].ToString() == "Persona")
                         {
                     %>
 
@@ -65,6 +68,7 @@
                         } 
                     %>
                 </ul>
+                     </LoggedInTemplate>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
                         <ul class="nav navbar-nav navbar-right">
