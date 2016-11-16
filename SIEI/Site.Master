@@ -17,7 +17,7 @@
 
 </head>
 <body>
-    <form runat="server" >
+    <form runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see http://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -52,19 +52,47 @@
                 </button>
                 <a class="navbar-brand logo" runat="server" href="~/">SIEI</a>
             </div>
+
             <div class="navbar-collapse collapse">
-                <ul id="opcNav" class="nav navbar-nav nvb">
-                    <%if (Session["Role"] != null && Session["Role"].ToString() == "Persona")
-                        {
-                    %>
+                <asp:LoginView runat="server" ViewStateMode="Disabled">
+                    <LoggedInTemplate>
+                        <ul id="opcNav" class="nav navbar-nav nvb">
 
-                    <li><a id="regPers" runat="server" href="~/Account/Register">Registrar persona</a></li>
-                    <li><a id="regEmp" runat="server" href="~/Account/RegistrarEmpresa">Registrar empresa</a></li>
+                            <%if (Session["Role"] != null && Session["Role"].ToString() == "Persona")
+                                {
+                            %>
 
-                    <% 
-                        } 
-                    %>
-                </ul>
+                            <li><a id="regPers" runat="server" href="~/InformacionPersonal">Datos personales</a></li>
+                            <li><a id="bscEmpleo" runat="server" href="~/BuscarEmpleo">Buscar empleo</a></li>
+                            <li><a id="contServ" runat="server" href="~/ContratarServicios">Contratar servicios</a></li>
+                            <li><a id="ofrecerServ" runat="server" href="~/OfrecerServicios">Ofrecer servicios</a></li>
+
+                            <% 
+                                }
+                                else
+                                {
+                                    if (Session["Role"] != null && Session["Role"].ToString() == "Empresa")
+                                    {
+                            %>
+                            <li><a id="empDatos" runat="server" href="~/Empleo">Datos</a></li>
+                            <li><a id="solici" runat="server" href="~/Solicitudes">Solicitudes</a></li>
+                            <li><a id="personal" runat="server" href="~/Personal">Personal</a></li>
+                            <li><a id="ranking" runat="server" href="~/Ranking">Ranking</a></li>
+                            <% 
+                                }
+                                else
+                                {
+                            %>
+
+                            <li><a id="emps" runat="server" href="~">Empresas</a></li>
+                            <li><a id="pers" runat="server" href="~">Personas</a></li>
+                            <% 
+                                    }
+                                }
+                            %>
+                        </ul>
+                    </LoggedInTemplate>
+                </asp:LoginView>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
                         <ul class="nav navbar-nav navbar-right">
@@ -79,9 +107,9 @@
                             </li>
                         </ul>
                     </LoggedInTemplate>
-                   
+
                 </asp:LoginView>
-                
+
             </div>
         </div>
 
@@ -101,39 +129,39 @@
 
                     </div>
 
-                  
-                        <div class="row center">
-                            <ul class="">
-                                <li>
-                                    <p><span class="glyphicon glyphicon-envelope"></span>  devmyrrie@gmail.com</p>
-                                </li>
-                                <li>
-                                    <p><span class="glyphicon glyphicon-map-marker"></span>  Managua, Nicaragua.</p>
-                                </li>
-                                <li>
-                                    <p><span class="glyphicon glyphicon-phone"></span>  +505 8523 6822</p>
-                                </li>
-                            </ul>
+
+                    <div class="row center">
+                        <ul class="">
+                            <li>
+                                <p><span class="glyphicon glyphicon-envelope"></span>devmyrrie@gmail.com</p>
+                            </li>
+                            <li>
+                                <p><span class="glyphicon glyphicon-map-marker"></span>Managua, Nicaragua.</p>
+                            </li>
+                            <li>
+                                <p><span class="glyphicon glyphicon-phone"></span>+505 8523 6822</p>
+                            </li>
+                        </ul>
 
                     </div>
 
-                    <div class ="row">
-                    <div id="social-media">
-                        <a href="#" class="contact">
-                            <img src="/Img/twitter.png" width="50" />
-                        </a>
+                    <div class="row">
+                        <div id="social-media">
+                            <a href="#" class="contact">
+                                <img src="/Img/twitter.png" width="50" />
+                            </a>
 
 
-                        <a href="#" class="contact">
-                            <img src="/Img/tumblr.png" width="50" />
-                        </a>
+                            <a href="#" class="contact">
+                                <img src="/Img/tumblr.png" width="50" />
+                            </a>
 
-                        <a href="#" class="contact">
-                            <img src="/Img/fb.png" width="50" />
-                        </a>
+                            <a href="#" class="contact">
+                                <img src="/Img/fb.png" width="50" />
+                            </a>
+                        </div>
                     </div>
                 </div>
-                    </div>
             </div>
 
         </footer>
