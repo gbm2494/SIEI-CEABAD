@@ -54,8 +54,16 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul id="opcNav" class="nav navbar-nav nvb">
+                    <%if (Session["Role"] != null && Session["Role"].ToString() == "Persona")
+                        {
+                    %>
+
                     <li><a id="regPers" runat="server" href="~/Account/Register">Registrar persona</a></li>
                     <li><a id="regEmp" runat="server" href="~/Account/RegistrarEmpresa">Registrar empresa</a></li>
+
+                    <% 
+                        } 
+                    %>
                 </ul>
                 <asp:LoginView runat="server" ViewStateMode="Disabled">
                     <AnonymousTemplate>
@@ -71,7 +79,9 @@
                             </li>
                         </ul>
                     </LoggedInTemplate>
+                   
                 </asp:LoginView>
+                
             </div>
         </div>
 

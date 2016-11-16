@@ -5,11 +5,16 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using SIEI.Models;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Linq;
 
 namespace SIEI.Account
 {
     public partial class Login : Page
     {
+        ApplicationDbContext context = new ApplicationDbContext();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
@@ -21,6 +26,15 @@ namespace SIEI.Account
             {
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
+            var roles = roleManager.Roles.ToList();
+
+            for (int i = 0; i < roles.Count; i++)
+            {
+                comboRol.Items.Add(roles[i].Name.ToString());
+            }
+
         }
 
         protected void LogIn(object sender, EventArgs e)
