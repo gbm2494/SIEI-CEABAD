@@ -11,6 +11,22 @@ body {
     margin: 0;
 }
 
+
+.box_finder {
+    background-color: rgba(20, 20, 20, 0.6);
+    border: medium none;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+
+#inner {
+    width: 50%;
+    margin: 0 auto; 
+}
+
+
+
 .myJumbo {
 padding-bottom: 1em !important;
 margin-bottom: 0.6em;
