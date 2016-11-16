@@ -30,6 +30,7 @@ namespace SIEI.Models
             identificacion = nuevaPersona.getIdentificacion;
             id = nuevaPersona.getId;
             correo = nuevaPersona.getCorreo;
+
         }
 
         public string identificacion { get; set; }

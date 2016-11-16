@@ -13,12 +13,19 @@ namespace SIEI.Capas.Capa_Control
 
         /*
          */
-        public void insertarPersona(object[] nueva)
+        public Boolean insertarPersona(object[] nueva)
         {
+      
             EntidadPersona nuevaPersona = new EntidadPersona(1, nueva);
-            Boolean resultado = controladoraBDPersonas.insertarPersona(nuevaPersona);
-
-           
+            return controladoraBDPersonas.insertarPersona(nuevaPersona);
         }
+
+        public void actualizarPersona(object[] actualizado)
+        {
+            Boolean resultado;
+            EntidadPersona personaActualizada = new EntidadPersona(2, actualizado);
+            return controladoraBDPersonas.modificarPersona(personaActualizada);
+        }
+
     }
 }
