@@ -18,21 +18,28 @@ namespace SIEI.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                llenarCombobox();
+            }
 
-
+            RegisterHyperLink.NavigateUrl = "Register";
             // Enable this once you have account confirmation enabled for password reset functionality
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
-            // OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
+            OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
             var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
             if (!String.IsNullOrEmpty(returnUrl))
             {
-                // RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
+                RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
 
+                      
+        }
+
+        protected void llenarCombobox()
+        {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
             var roles = roleManager.Roles.ToList();
-
-            comboRol.Items.Clear();
 
             comboRol.Items.Add("Seleccione");
 
@@ -40,7 +47,6 @@ namespace SIEI.Account
             {
                 comboRol.Items.Add(roles[i].Name.ToString());
             }
-
         }
 
         protected void LogIn(object sender, EventArgs e)
@@ -53,7 +59,7 @@ namespace SIEI.Account
 
                 // This doen't count login failures towards account lockout
                 // To enable password failures to trigger lockout, change to shouldLockout: true
-                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, false, shouldLockout: false);
+                var result = signinManager.PasswordSignIn(Email.Text, Password.Text, RememberMe.Checked, shouldLockout: false);
 
                 switch (result)
                 {
@@ -98,16 +104,16 @@ namespace SIEI.Account
                         Response.Redirect("/Account/Lockout");
                         break;
                     case SignInStatus.RequiresVerification:
-                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}",
+                        Response.Redirect(String.Format("/Account/TwoFactorAuthenticationSignIn?ReturnUrl={0}&RememberMe={1}", 
                                                         Request.QueryString["ReturnUrl"],
-                                                        false),
+                                                        RememberMe.Checked),
                                           true);
                         break;
                     case SignInStatus.Failure:
                     default:
                         FailureText.Text = "Intento de inicio de sesión inválido";
                         ErrorMessage.Visible = true;
-
+                        
                         break;
                 }
             }
