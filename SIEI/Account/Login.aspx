@@ -22,15 +22,42 @@
             removeHeader();
         </script> 
    -->
+
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div id="errorPassword" runat="server" class="alert alert-danger" style = "text-align:center">
+                <strong>Error!</strong> La contraseña no es correcta.
+            </div>
+
+        </div>
+    </div>
+
     <section id="loginForm">
         <div class="form-horizontal text-center">
 
-            <hr />
+
             <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                 <p class="text-danger">
                     <asp:Literal runat="server" ID="FailureText" />
                 </p>
             </asp:PlaceHolder>
+
+
+            <div class="row">
+                <div class="col-md-8 col-md-offset-3">
+                    <div class="form-group">
+                        <asp:Label runat="server" AssociatedControlID="txtIdentificacion" CssClass="col-md-2 control-label">Identificación:</asp:Label>
+
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control" MaxLength="15" />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtIdentificacion"
+                                CssClass="text-danger" ErrorMessage="La identificación es un campo requerido." />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-8 col-md-offset-3">
                     <div class="form-group">
