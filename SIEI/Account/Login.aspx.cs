@@ -5,11 +5,17 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using SIEI.Models;
+using System.Web.Security;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System.Linq;
+using System.Web.Providers.Entities;
 
 namespace SIEI.Account
 {
     public partial class Login : Page
     {
+        ApplicationDbContext context = new ApplicationDbContext();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
@@ -21,6 +27,17 @@ namespace SIEI.Account
             {
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
+
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
+            var roles = roleManager.Roles.ToList();
+
+            comboRol.Items.Add("Seleccione");
+
+            for (int i = 0; i < roles.Count; i++)
+            {
+                comboRol.Items.Add(roles[i].Name.ToString());
+            }
+
         }
 
         protected void LogIn(object sender, EventArgs e)
@@ -38,8 +55,42 @@ namespace SIEI.Account
                 switch (result)
                 {
                     case SignInStatus.Success:
-                        IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+
+                        var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
+
+                        var usuarios = roleManager.FindByName(comboRol.SelectedValue).Users;
+
+                        var usuariosLista = usuarios.ToList();
+
+                        var user = manager.FindByName(Email.Text);
+
+                        Boolean existe = false;
+                        int i = 0;
+
+                        while (existe == false && usuarios.Count > i)
+                        {
+                            if (usuariosLista[i].UserId == user.Id)
+                            {
+                                existe = true;
+                            }
+
+                            i++;
+                        }
+
+                        if (existe == true)
+                        {
+                            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                            Session["Role"] = comboRol.SelectedValue;
+
+                        }
+                        else
+                        {
+                            FailureText.Text = "Intento de inicio de sesión inválido";
+                            ErrorMessage.Visible = true;
+                        }
+
                         break;
+
                     case SignInStatus.LockedOut:
                         Response.Redirect("/Account/Lockout");
                         break;
@@ -51,7 +102,7 @@ namespace SIEI.Account
                         break;
                     case SignInStatus.Failure:
                     default:
-                        FailureText.Text = "Invalid login attempt";
+                        FailureText.Text = "Intento de inicio de sesión inválido";
                         ErrorMessage.Visible = true;
                         break;
                 }
