@@ -9,7 +9,7 @@
         <div class="col-md-8">
             <section id="loginForm">
                 <div class="form-horizontal">
-                    <h4>Use a local account to log in.</h4>
+                    <h4>Inicio de sesión</h4>
                     <hr />
                     <asp:PlaceHolder runat="server" ID="ErrorMessage" Visible="false">
                         <p class="text-danger">
@@ -35,7 +35,7 @@
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="comboRol" CssClass="col-md-2 control-label">Rol:</asp:Label>
                         <div class="col-md-5">
-                            <asp:DropDownList runat="server" ID="comboRol" CssClass="form-control">
+                            <asp:DropDownList runat="server" ID="comboRol" CssClass="form-control" EnableViewState ="true">
                             </asp:DropDownList>
                         </div>
                     </div>

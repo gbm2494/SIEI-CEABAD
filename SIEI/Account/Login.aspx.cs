@@ -18,7 +18,11 @@ namespace SIEI.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+            if (!IsPostBack)
+            {
+                llenarCombobox();
+            }
+
             RegisterHyperLink.NavigateUrl = "Register";
             // Enable this once you have account confirmation enabled for password reset functionality
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
@@ -29,10 +33,13 @@ namespace SIEI.Account
                 RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
             }
 
+                      
+        }
+
+        protected void llenarCombobox()
+        {
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
             var roles = roleManager.Roles.ToList();
-
-            comboRol.Items.Clear();
 
             comboRol.Items.Add("Seleccione");
 
@@ -40,7 +47,6 @@ namespace SIEI.Account
             {
                 comboRol.Items.Add(roles[i].Name.ToString());
             }
-
         }
 
         protected void LogIn(object sender, EventArgs e)

@@ -391,3 +391,4 @@ C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\bin\Mi
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\obj\Debug\SIEI.dll
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\obj\Debug\SIEI.pdb
+C:\Users\estudiante\Desktop\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache
