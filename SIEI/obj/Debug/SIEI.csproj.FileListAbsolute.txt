@@ -388,6 +388,6 @@ C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\bin\Mi
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\obj\Debug\SIEI.dll
 C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\obj\Debug\SIEI.pdb
+C:\Users\devmyrrie\Documents\Visual Studio 2015\Projects\SIEI-CEABAD\SIEI\obj\Debug\SIEI.csprojResolveAssemblyReference.cache
