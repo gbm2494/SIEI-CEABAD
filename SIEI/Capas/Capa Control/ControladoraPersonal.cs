@@ -29,9 +29,16 @@ namespace SIEI.Capas.Capa_Control
             return controladoraBDPersonas.modificarPersona(personaActualizada);
         }
 
+        /**/
         public object[] obtenerDatosPersonaLoggeada()
         {
             return controladoraBDPersonas.obtenerDatosPersonaLoggeada();
+        }
+
+        /**/
+        public Boolean actualizarContrasena(string password)
+        {
+            return controladoraBDPersonas.actualizarContrasena(password);
         }
 
     }
