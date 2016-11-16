@@ -20,12 +20,12 @@ namespace SIEI.Capas.Capa_Control
             return controladoraBDPersonas.insertarPersona(nuevaPersona);
         }
 
-        public void actualizarPersona(object[] actualizado)
+        /*public void actualizarPersona(object[] actualizado)
         {
             Boolean resultado;
             EntidadPersona personaActualizada = new EntidadPersona(2, actualizado);
             return controladoraBDPersonas.modificarPersona(personaActualizada);
-        }
+        }*/
 
     }
 }

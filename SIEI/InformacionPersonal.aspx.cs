@@ -24,15 +24,15 @@ namespace SIEI
         {
             //actualizar datos persona
             object[] datosPersona = new object[5];
-
+            /*
             datosPersona[0] = txtIdentificacion.Text;
             datosPersona[1] = txtNombre.Text;
             datosPersona[2] = txtApellido.Text;
             datosPersona[3] = txtApellido2.Text;
             datosPersona[4] = chkDiscapacidad.Checked;
             datosPersona[5] = txtCorreo.Text;
-
-            controladoraPersonas.actualizarPersona(datosPersona);
+            */
+           // controladoraPersonas.actualizarPersona(datosPersona);
 
             //actualizar contraseña
 

@@ -42,11 +42,12 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             return resultado;
         }
 
-        public Boolean modificarPersona(EntidadPersona actualizada)
+       /* public Boolean modificarPersona(EntidadPersona actualizada)
         {
             Boolean resultado = false;
 
             Persona nuevaPersona = new Persona(nueva);
         }
+        */
     }
 }

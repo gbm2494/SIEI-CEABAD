@@ -10,7 +10,7 @@
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" Visible="false" />
     </p>
-        </div>
+    </div>
     <div class="form-horizontal text-center">
         <h4>Crea tu cuenta</h4>
         <hr />

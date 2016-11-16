@@ -78,6 +78,7 @@
                             <li><a id="solici" runat="server" href="~/Solicitudes">Solicitudes</a></li>
                             <li><a id="personal" runat="server" href="~/Personal">Personal</a></li>
                             <li><a id="ranking" runat="server" href="~/Ranking">Ranking</a></li>
+                            <li><a id="puestoPu" runat="server" href="~/PublicacionPuestos">Puestos de trabajo</a></li>
                             <% 
                                 }
                                 else
