@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DatosEmpresa.aspx.cs" Inherits="SIEI.DatosEmpresa" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
 
@@ -19,6 +20,9 @@
                 }
                 removeHeader();
             </script>
+
+
+
 
             <div class="form-group">
 
@@ -80,39 +84,28 @@
                                 <div class="col-md-12">
                                     <strong>
                                         <asp:Label ID="lblTelefono" runat="server" Text="Teléfono:" CssClass="col-md-3 control-label"></asp:Label></strong>
-                                    <div class="col-sm-6 ">
+                                    <div class="col-md-6 ">
                                         <asp:TextBox runat="server" ID="txtTelefono" PlaceHolder="Ej: 88888888" CssClass="form-control" TextMode="Phone" MaxLength="11"></asp:TextBox>
                                         <asp:RegularExpressionValidator ID="REV2" runat="server" ControlToValidate="txtTelefono" ErrorMessage="*Ingrese Valores Numéricos"
                                             ForeColor="Red" ValidationExpression="^[0-9]*"> </asp:RegularExpressionValidator>
                                     </div>
-                                    <div class="col-md-1">
-                                        <asp:LinkButton runat="server" ID="lnkNumero" CssClass="glyphicon.glyphicon-plus-sign">
-                                        <span aria-hidden="true" class="glyphicon glyphicon-plus-sign blueColor"></span>
-                                        </asp:LinkButton>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <strong>
+                                        <asp:Label ID="lbl2Telefono" runat="server" Text="Teléfono 2:" CssClass="col-md-3 control-label"></asp:Label></strong>
+                                    <div class="col-md-6 ">
+                                        <asp:TextBox runat="server" ID="txtTelefono2" PlaceHolder="Ej: 88888888" CssClass="form-control" TextMode="Phone" MaxLength="11"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtTelefono2" ErrorMessage="*Ingrese Valores Numéricos"
+                                            ForeColor="Red" ValidationExpression="^[0-9]*"> </asp:RegularExpressionValidator>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                         </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <strong>
-                                <asp:Label ID="lbltels" runat="server" Text="Teléfonos agregados" CssClass="col-md-3 control-label"></asp:Label></strong>
-
-
-                            <div class="col-md-6 ">
-                                <asp:ListBox runat="server" ID="listTelefonos" CssClass="form-control"></asp:ListBox>
-                            </div>
-                            <div class="col-md-1">
-                                <asp:LinkButton runat="server" ID="lnkQuitar" Style="height: 100px" CssClass="">
-                                        <span aria-hidden="true" class="glyphicon glyphicon-minus-sign blueColor"></span>
-                                </asp:LinkButton>
-                            </div>
-                        </div>
-
-                    </div>
-                      
-
 
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -155,30 +148,30 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class ="row">
+
+                <div class="row">
 
                     <div class="col-md-12">
 
-                      <asp:UpdatePanel ID="Update_Ubicaciones" runat="server" UpdateMode="conditional" ChildrenAsTriggers="false">
-                    <ContentTemplate>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <strong>
-                                        <asp:Label ID="Label1" runat="server" Text="Ubicaciones:" CssClass="col-md-3 control-label"></asp:Label></strong>
-                                    <div class="col-sm-6 ">
-                                        <asp:DropDownList runat="server" ID="comboAreaTrabajo" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="areaSeleccionada" EnableViewState="true"></asp:DropDownList>
-                                    </div>
-                                    <div class="col-md-1">
-                                        <asp:LinkButton runat="server" ID="LinkButton1" CssClass="glyphicon.glyphicon-plus-sign">
+                        <asp:UpdatePanel ID="Update_Ubicaciones" runat="server" UpdateMode="conditional" ChildrenAsTriggers="false">
+                            <ContentTemplate>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <strong>
+                                                <asp:Label ID="Label1" runat="server" Text="Ubicaciones:" CssClass="col-md-3 control-label"></asp:Label></strong>
+                                            <div class="col-sm-6 ">
+                                                <asp:DropDownList runat="server" ID="comboAreaTrabajo" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="areaSeleccionada" EnableViewState="true"></asp:DropDownList>
+                                            </div>
+                                            <div class="col-md-1">
+                                                <asp:LinkButton runat="server" ID="LinkButton1" CssClass="glyphicon.glyphicon-plus-sign">
                                         <span aria-hidden="true" class="glyphicon glyphicon-plus-sign blueColor"></span>
-                                        </asp:LinkButton>
+                                                </asp:LinkButton>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        </div>
+                                </div>
                     <div class="form-group">
                         <div class="row">
                             <strong>
@@ -196,32 +189,32 @@
                         </div>
 
                     </div>
-                      
-                   
 
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-                      </div>
+
+
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
                 </div>
 
-              
-                
-                 
+
+
+
                 <div class="row">
                     <div class="col-xs-6 col-lg-4">
-                 
-                            <div style="float:right">
+
+                        <div style="float: right">
                             <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-default" />
-     
+
 
                         </div>
 
                     </div>
                 </div>
-                 
+
             </div>
 
-         </div>
+        </div>
 
 
 
