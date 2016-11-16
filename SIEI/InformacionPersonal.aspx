@@ -30,7 +30,7 @@
                         </div>
                         <asp:Label runat="server" AssociatedControlID="txtIdentificacion" CssClass="col-md-3 control-label">Identificación:</asp:Label>
                         <div class="col-md-6">
-                            <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control" MaxLength="15" />
+                            <asp:TextBox runat="server" ID="txtIdentificacion" Enabled="false" CssClass="form-control" MaxLength="15" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtIdentificacion"
                                 CssClass="text-danger" ErrorMessage="La identificación es un campo requerido." />
                         </div>
@@ -80,38 +80,30 @@
                                 <div class="col-md-12">
                                     <strong>
                                         <asp:Label ID="lblTelefono" runat="server" Text="Teléfono:" CssClass="col-md-3 control-label"></asp:Label></strong>
-                                    <div class="col-sm-6 ">
+                                    <div class="col-md-6 ">
                                         <asp:TextBox runat="server" ID="txtTelefono" PlaceHolder="Ej: 88888888" CssClass="form-control" TextMode="Phone" MaxLength="11"></asp:TextBox>
                                         <asp:RegularExpressionValidator ID="REV2" runat="server" ControlToValidate="txtTelefono" ErrorMessage="*Ingrese Valores Numéricos"
                                             ForeColor="Red" ValidationExpression="^[0-9]*"> </asp:RegularExpressionValidator>
                                     </div>
-                                    <div class="col-md-1">
-                                        <asp:LinkButton runat="server" ID="lnkNumero" CssClass="glyphicon.glyphicon-plus-sign" >
-                                        <span aria-hidden="true" class="glyphicon glyphicon-plus-sign blueColor"></span>
-                                        </asp:LinkButton>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <strong>
+                                        <asp:Label ID="lblTelefono2" runat="server" Text="Teléfono 2:" CssClass="col-md-3 control-label"></asp:Label></strong>
+                                    <div class="col-md-6 ">
+                                        <asp:TextBox runat="server" ID="txtTelefono2" PlaceHolder="Ej: 88888888" CssClass="form-control" TextMode="Phone" MaxLength="11"></asp:TextBox>
+                                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtTelefono2" ErrorMessage="*Ingrese Valores Numéricos"
+                                            ForeColor="Red" ValidationExpression="^[0-9]*"> </asp:RegularExpressionValidator>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                         </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <strong>
-                                <asp:Label ID="lbltels" runat="server" Text="Teléfonos agregados" CssClass="col-md-3 control-label"></asp:Label></strong>
-
-
-                            <div class="col-md-6 ">
-                                <asp:ListBox runat="server" ID="listTelefonos" CssClass="form-control"></asp:ListBox>
-                            </div>
-                            <div class="col-md-1">
-                                <asp:LinkButton runat="server" ID="lnkQuitar" Style="height: 100px" CssClass="">
-                                        <span aria-hidden="true" class="glyphicon glyphicon-minus-sign blueColor"></span>
-                                </asp:LinkButton>
-                            </div>
-                        </div>
-
-                    </div>
-                      
+                 
                     </ContentTemplate>
                 </asp:UpdatePanel>
 
@@ -124,7 +116,7 @@
                     <div class="col-md-12">
                         <asp:Label runat="server" AssociatedControlID="txtCorreo" CssClass="col-md-3 control-label">Correo:</asp:Label>
                         <div class="col-md-6">
-                            <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control" MaxLength="15" />
+                            <asp:TextBox runat="server" Enabled="false" ID="txtCorreo" CssClass="form-control" MaxLength="15" />
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="txtCorreo"
                                 CssClass="text-danger" ErrorMessage="El correo es un campo requerido." />
                         </div>
@@ -147,29 +139,49 @@
                         </div>
                     </div>
                 </div>
-                 <div class="form-group">
-                            <div class="row">
-                               <strong> <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognoscitiva? La información no será suministrada a las empresas." CssClass="col-md-6 control-label"></asp:Label></strong>
-                          <asp:CheckBox runat="server" CssClass="col-md-1  control-label" ID="chkDiscapacidad"></asp:CheckBox>
+                <div class="form-group">
+                    <div class="row" style="padding-top:1em">
+                        <strong>
+                            <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognoscitiva? La información no será suministrada a las empresas." CssClass="col-md-6 control-label"></asp:Label></strong>
+                        <asp:CheckBox runat="server" CssClass="col-md-1  control-label"></asp:CheckBox>
 
-                            </div>
+                    </div>
+
+                </div>
+
+                <div class="row" style="padding-top:1em">
+                    <div class="col-md-12">
+                        <strong>
+                            <asp:Label ID="fileUpload" runat="server" Text="Cargar curriculum" CssClass="col-md-3 control-label"></asp:Label></strong>
+                        <div class="col-md-6">
+                            <asp:FileUpload ID="FileUpload1" runat="server" />
 
                         </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class=" col-md-9">
-                            <div style="float:right">
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class=" col-md-9">
+                        <div style="float: right">
                             <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-default" />
                         </div>
 
-                        </div>
-
                     </div>
+
                 </div>
-                 
             </div>
 
-         </div>
+        </div>
+
+    </div>
 
 
 
