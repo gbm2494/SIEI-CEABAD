@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SIEI.Capas.Capa_Entidad
 {
@@ -18,6 +20,13 @@ namespace SIEI.Capas.Capa_Entidad
 
         /*
          */
+        public EntidadPersona(string identificacion, string id, string nombre, string ape1, string ape2, string email, byte[] cv, Boolean disc)
+        {
+
+        }
+
+        /*
+         */
         public EntidadPersona(int tipo, object[] datos)
         {
             //inserción necesaria solo si es un registrar persona
@@ -26,6 +35,25 @@ namespace SIEI.Capas.Capa_Entidad
                 identificacion = datos[0].ToString();
                 correo = datos[1].ToString();
                 id = datos[2].ToString();
+            }
+            else
+            {
+                identificacion = datos[0].ToString();
+                nombre = datos[1].ToString();
+                apellido1 = datos[2].ToString();
+                apellido2 = datos[3].ToString();
+                discapacidad = Convert.ToBoolean(datos[4]);
+                correo = datos[5].ToString();
+
+                if (datos[6] != null)
+                {
+                    BinaryFormatter bf = new BinaryFormatter();
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        bf.Serialize(ms, datos[6]);
+                        curriculo = ms.ToArray();    
+                    }
+                }
 
             }
         }

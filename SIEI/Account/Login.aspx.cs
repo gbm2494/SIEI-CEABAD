@@ -18,6 +18,7 @@ namespace SIEI.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             RegisterHyperLink.NavigateUrl = "Register";
             // Enable this once you have account confirmation enabled for password reset functionality
             //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
@@ -30,6 +31,8 @@ namespace SIEI.Account
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>());
             var roles = roleManager.Roles.ToList();
+
+            comboRol.Items.Clear();
 
             comboRol.Items.Add("Seleccione");
 
@@ -58,7 +61,7 @@ namespace SIEI.Account
 
                         var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
 
-                        var usuarios = roleManager.FindByName(comboRol.SelectedValue).Users;
+                        var usuarios = roleManager.FindByName(comboRol.Text).Users;
 
                         var usuariosLista = usuarios.ToList();
 
@@ -79,14 +82,14 @@ namespace SIEI.Account
 
                         if (existe == true)
                         {
-                            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                             Session["Role"] = comboRol.SelectedValue;
-
+                            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
                         }
                         else
                         {
                             FailureText.Text = "Intento de inicio de sesión inválido";
                             ErrorMessage.Visible = true;
+
                         }
 
                         break;
@@ -104,6 +107,7 @@ namespace SIEI.Account
                     default:
                         FailureText.Text = "Intento de inicio de sesión inválido";
                         ErrorMessage.Visible = true;
+                        
                         break;
                 }
             }
