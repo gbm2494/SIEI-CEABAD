@@ -3,10 +3,24 @@
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
-
-
-    <div class="col-md-8">
+   <div class=" text-center">
+        <h2 style="padding-top: 3em"><%: Title %></h2>
+        <p class="text-danger">
+            <asp:Literal runat="server" ID="Literal1" Visible="false" />
+        </p>
+    </div>
+    
+        <script type="text/javascript">
+            function removeHeader() {
+                document.getElementById("aNav").className =
+                    document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
+                document.getElementById("imgHeader").style.display = "none";
+                document.getElementById("regPers").style.fontSize = "1em";
+                document.getElementById("regEmp").style.fontSize = "1em";
+            }
+            removeHeader();
+        </script>
+  
         <section id="loginForm">
             <div class="form-horizontal">
                 <h4>Use a local account to log in.</h4>
@@ -82,8 +96,5 @@
                 --%>
             </p>
         </section>
-    </div>
-
-  
-
+ 
 </asp:Content>
