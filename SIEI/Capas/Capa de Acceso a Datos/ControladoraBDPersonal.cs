@@ -6,7 +6,8 @@ using SIEI.Capas.Capa_Entidad;
 using SIEI.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
+using System.Data.Entity;
+
 
 namespace SIEI.Capas.Capa_de_Acceso_a_Datos
 {
@@ -42,11 +43,49 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             return resultado;
         }
 
+        /**/
         public Boolean modificarPersona(EntidadPersona actualizada)
         {
             Boolean resultado = false;
 
-            Persona nuevaPersona = new Persona(nueva);
+            Persona nuevaPersona = new Persona(actualizada, true);
+
+            try
+            {
+                bd.Entry(nuevaPersona).State = EntityState.Modified;
+                bd.SaveChanges();
+                resultado = true;
+            }
+            catch (Exception e)
+            {
+                resultado = false;
+            }
+
+            return resultado;
+        }
+
+        /**/
+
+        public object[] obtenerDatosPersonaLoggeada()
+        {
+            string id = HttpContext.Current.User.Identity.GetUserId();
+
+            List<Persona> persona = bd.Persona.Where(x => x.id == id).ToList();
+
+            Persona resultado = persona.FirstOrDefault();
+
+            object[] retorno = new object[7];
+
+            retorno[0] = resultado.identificacion;
+            retorno[1] = resultado.nombre;
+            retorno[2] = resultado.apellido1;
+            retorno[3] = resultado.apellido2;
+            retorno[4] = resultado.discapacidad;
+            retorno[5] = resultado.correo;
+            retorno[6] = resultado.curriculo;
+
+            return retorno;
+
         }
     }
 }

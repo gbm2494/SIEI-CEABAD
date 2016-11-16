@@ -127,15 +127,19 @@
                     <div class="col-md-12">
                         <asp:Label runat="server" AssociatedControlID="txtPassword" CssClass="col-md-3 control-label">Contraseña:</asp:Label>
                         <div class="col-md-6">
-                            <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" MaxLength="50" />
+                            <asp:TextBox runat="server" ID="txtPassword" CssClass="form-control" MaxLength="50" TextMode="Password" />
                         </div>
                     </div>
                 </div>
+                <br />
                 <div class="row">
                     <div class="col-md-12">
                         <asp:Label runat="server" AssociatedControlID="txtConfirm" CssClass="col-md-3 control-label">Confirmar:</asp:Label>
                         <div class="col-md-6">
-                            <asp:TextBox runat="server" ID="txtConfirm" CssClass="form-control" MaxLength="50" />
+                            <asp:TextBox runat="server" ID="txtConfirm" CssClass="form-control" MaxLength="50" TextMode="Password"/>
+                            <asp:CompareValidator runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirm"
+                            CssClass="text-danger" Display="Dynamic" ErrorMessage="La contraseña y la confirmación de contraseña no son iguales." />
+                    
                         </div>
                     </div>
                 </div>
@@ -143,7 +147,7 @@
                     <div class="row" style="padding-top:1em">
                         <strong>
                             <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognoscitiva? La información no será suministrada a las empresas." CssClass="col-md-6 control-label"></asp:Label></strong>
-                        <asp:CheckBox runat="server" CssClass="col-md-1  control-label"></asp:CheckBox>
+                        <asp:CheckBox runat="server" CssClass="col-md-1  control-label" ID="chkDiscapacidad"></asp:CheckBox>
 
                     </div>
 
@@ -154,7 +158,7 @@
                         <strong>
                             <asp:Label ID="fileUpload" runat="server" Text="Cargar curriculum" CssClass="col-md-3 control-label"></asp:Label></strong>
                         <div class="col-md-6">
-                            <asp:FileUpload ID="FileUpload1" runat="server" />
+                            <asp:FileUpload ID="fileUploadCurriculo" runat="server" />
 
                         </div>
                     </div>
@@ -168,10 +172,10 @@
 
 
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-12" style="float: right">
                     <div class=" col-md-9">
                         <div style="float: right">
-                            <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-default" />
+                            <asp:Button runat="server" Text="Actualizar" CssClass="btn btn-default" OnClick="btnActualizar"/>
                         </div>
 
                     </div>
@@ -183,9 +187,6 @@
 
     </div>
 
-
-
-    </div>
 
 </asp:Content>
 
