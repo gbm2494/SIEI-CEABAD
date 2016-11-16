@@ -14,6 +14,19 @@ namespace SIEI
         {
 
         }
-        
+
+        protected void lnkNumero_Click(object sender, EventArgs e)
+        {
+            txtPassword.Attributes["Value"] = txtPassword.Text;
+            txtConfirm.Attributes["Value"] = txtConfirm.Text;
+
+            if (txtTelefono.Text != "")
+            {
+                listTelefonos.Items.Add(txtTelefono.Text);
+                txtTelefono.Text = "";
+            }
+
+            Update_Telefonos.Update();
+        }
     }
 }

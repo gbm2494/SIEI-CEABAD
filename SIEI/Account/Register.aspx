@@ -35,6 +35,9 @@
                     <div id="error" runat="server" class="alert alert-danger" style="display: none">
                         <strong>Error!</strong> La identificación y/o correo de la persona ya se encuentran registrados en el sistema.
                     </div>
+                    <div ID="errorPassword" runat="server" class="alert alert-danger" style="display:none">
+                <strong>Error!</strong> La contraseña no tiene el formato correcto: mínimo 6 caracteres, letras mayúsculas, minúsculas, números y caracteres especiales.
+            </div>
                     <div id="check" runat="server" class="alert alert-success" style="display: none">
                         <strong>Éxito!</strong> La persona fue registrada en el sistema.
                     </div>

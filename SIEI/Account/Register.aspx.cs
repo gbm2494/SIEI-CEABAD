@@ -52,8 +52,16 @@ namespace SIEI.Account
             }
             else 
             {
+                //result.Errors.
                 ErrorMessage.Text = result.Errors.FirstOrDefault();
-                error.Style.Clear();
+                if (ErrorMessage.Text.Contains("Passwords"))
+                {
+                    errorPassword.Style.Clear();
+                }
+                else
+                {
+                    error.Style.Clear();
+                }
             }
         }
     }

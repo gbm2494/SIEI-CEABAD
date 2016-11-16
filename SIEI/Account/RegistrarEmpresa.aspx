@@ -15,6 +15,9 @@
             <div ID="error" runat="server" class="alert alert-danger" style="display:none">
                 <strong>Error!</strong> La identificación, nombre y/o correo de la empresa ya se encuentran registrados en el sistema.
             </div>
+            <div ID="errorPassword" runat="server" class="alert alert-danger" style="display:none">
+                <strong>Error!</strong> La contraseña no tiene el formato correcto: mínimo 6 caracteres, letras mayúsculas, minúsculas, números y caracteres especiales.
+            </div>
             <div ID="check" runat="server" class="alert alert-success" style="display:none">
                 <strong>Éxito!</strong> La empresa fue registrada en el sistema.
             </div>
