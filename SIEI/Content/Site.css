@@ -12,6 +12,13 @@ body {
 }
 
 
+
+.titulos {
+    font-size: 1em;
+
+
+}
+
 .box_finder {
     background-color: rgba(20, 20, 20, 0.6);
     border: medium none;
