@@ -150,7 +150,7 @@
                  <div class="form-group">
                             <div class="row">
                                <strong> <asp:Label ID="disc" runat="server" Text="¿Presenta algún tipo de discapacidad física o cognoscitiva? La información no será suministrada a las empresas." CssClass="col-md-6 control-label"></asp:Label></strong>
-                          <asp:CheckBox runat="server" CssClass="col-md-1  control-label"></asp:CheckBox>
+                          <asp:CheckBox runat="server" CssClass="col-md-1  control-label" ID="chkDiscapacidad"></asp:CheckBox>
 
                             </div>
 
