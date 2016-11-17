@@ -74,7 +74,7 @@
                             <li><a id="regPers"  runat="server" href="~/InformacionPersonal">Datos personales</a></li>
                             <li><a id="bscEmpleo" runat="server" href="~/BuscarEmpleo">Buscar empleo</a></li>
                             <li><a id="contServ" runat="server" href="~/ContratarServicios">Contratar servicios</a></li>
-                            <li><a id="ofrecerServ" runat="server" href="~/OfrecerServicios">Ofrecer servicios</a></li>
+                            <li><a id="ofrecerServ" runat="server" href="~/OfrecerServicio">Ofrecer servicios</a></li>
 
                             <% 
                                 }
