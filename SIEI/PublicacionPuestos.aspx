@@ -2,26 +2,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ValidationSummary runat="server" CssClass="text-danger" />
             <div class =" text-center" style="margin-top: 2em">
-            <h2 style="padding-top:3em"><%: Title %></h2>
+            <h2 style="padding-top:0em"><%: Title %></h2>
             <p class="text-danger">
                  <asp:Literal runat="server" ID="ErrorMessage" Visible="false" />
             </p>
             </div>
             <h4>Crear puesto</h4>
             <hr />
-            <script type="text/javascript">
-                function removeHeader() {
-                    document.getElementById("aNav").className =
-                        document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
-                    document.getElementById("imgHeader").style.display = "none";
-                    document.getElementById("empDatos").style.fontSize = "1em";
-                    document.getElementById("solici").style.fontSize = "1em";
-                    document.getElementById("personal").style.fontSize = "1em";
-                    document.getElementById("ranking").style.fontSize = "1em";
-                }
-                removeHeader();
-            </script>
-
+          
 
             <div class = "row">
                  <div class="form-group">

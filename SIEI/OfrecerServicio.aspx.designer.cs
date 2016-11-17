@@ -13,13 +13,22 @@ namespace SIEI {
     public partial class OfrecerServicio {
         
         /// <summary>
-        /// DDLTipo control.
+        /// check control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DDLTipo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl check;
+        
+        /// <summary>
+        /// comboServicio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList comboServicio;
         
         /// <summary>
         /// txtDesc control.
@@ -40,13 +49,13 @@ namespace SIEI {
         protected global::System.Web.UI.WebControls.TextBox txtCosto;
         
         /// <summary>
-        /// FUImage control.
+        /// FileUploadImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FUImage;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadImage;
         
         /// <summary>
         /// ImgUploaded control.

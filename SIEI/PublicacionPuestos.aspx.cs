@@ -60,12 +60,12 @@ namespace SIEI
         protected void llenarComboArea(string cedulaUsuario)
         {
             Object[] datos;
-            datos = new Object[3];
             datos[0] = "Seleccione";
             datos[1] = "Front End Developer";
             datos[2] = "Desarrollo móvil";
             this.comboAreaTrabajo.DataSource = datos;
             this.comboAreaTrabajo.DataBind();
+
 
 
         }

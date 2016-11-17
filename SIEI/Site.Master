@@ -58,8 +58,8 @@
                     <AnonymousTemplate>
                         <ul id="opcNav" class="nav navbar-nav nvb">
 
-                            <li><a id="regPers"  style="font-size:1em" runat ="server" href="~/Account/Register">Registrar persona</a></li>
-                            <li><a id="regEmpr"  style="font-size:1em" runat="server" href="~/Account/RegistrarEmpresa">Registrar Empresa</a></li>
+                            <li><a id="regPers"  style="font-size:1.3em" runat ="server" href="~/Account/Register">Registrar persona</a></li>
+                            <li><a id="regEmpr"  style="font-size:1.3em" runat="server" href="~/Account/RegistrarEmpresa">Registrar Empresa</a></li>
 
                         </ul>
                     </AnonymousTemplate>
@@ -71,10 +71,10 @@
                                 {
                             %>
 
-                            <li><a id="regPers" runat="server" href="~/InformacionPersonal">Datos personales</a></li>
+                            <li><a id="regPers"  runat="server" href="~/InformacionPersonal">Datos personales</a></li>
                             <li><a id="bscEmpleo" runat="server" href="~/BuscarEmpleo">Buscar empleo</a></li>
                             <li><a id="contServ" runat="server" href="~/ContratarServicios">Contratar servicios</a></li>
-                            <li><a id="ofrecerServ" runat="server" href="~/OfrecerServicios">Ofrecer servicios</a></li>
+                            <li><a id="ofrecerServ" runat="server" href="~/OfrecerServicio">Ofrecer servicios</a></li>
 
                             <% 
                                 }

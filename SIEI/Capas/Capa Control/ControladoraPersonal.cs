@@ -65,5 +65,17 @@ namespace SIEI.Capas.Capa_Control
             return controladoraBDPersonas.obtenerTelefonos(identificacion);
         }
 
+        /**/
+        public List<string> listaServicios()
+        {
+            return controladoraBDPersonas.listaServicios();
+        }
+
+        /**/
+        public Boolean insertarServicio(object[] datos)
+        {
+            EntidadServicio nuevo = new EntidadServicio(datos);
+            return controladoraBDPersonas.insertarServicio(nuevo);
+        }
     }
 }

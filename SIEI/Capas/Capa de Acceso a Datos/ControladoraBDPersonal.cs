@@ -171,5 +171,43 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
 
             return resultado;
         }
-    }
+
+        /**/
+        public List<string> listaServicios()
+        {
+            List<Tipo_Servicio> lista = bd.Tipo_Servicio.ToList();
+            List<string> resultado = new List<string>() ;
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                resultado.Add(lista.ElementAt(i).nombre.ToString());
+            }
+
+            return resultado;
+        }
+
+        /**/
+        public Boolean insertarServicio(EntidadServicio nueva)
+        {
+            Boolean resultado = false;
+
+            Servicio nuevo = new Servicio(nueva);
+
+            try
+            {
+
+                bd.Servicio.Add(nuevo);
+                bd.SaveChanges();
+
+                resultado = true;
+            }
+            catch (Exception e)
+            {
+                resultado = false;
+            }
+
+            return resultado;
+        }
+
+        }
 }
