@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using SIEI.Models;
 using SIEI.Capas.Capa_Control;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace SIEI
 {
@@ -26,6 +27,7 @@ namespace SIEI
                 {
                     object[] resultado = controladoraPersonas.obtenerDatosPersonaLoggeada();
 
+                    
                     //en la posición 0 del objeto viene la identificación
                     txtIdentificacion.Text = resultado[0].ToString();
 
@@ -58,11 +60,24 @@ namespace SIEI
                     //hay curriculo cargado
                     if (resultado[6] != null)
                     {
-                        fileUploadCurriculo.fi
+                        lnkDownload.Text = "curriculo.pdf";
+
+                    }
+
+                    object[] telefonos = controladoraPersonas.obtenerTelefonos(txtIdentificacion.Text);
+
+                    if (telefonos[0] != null)
+                    {
+                        txtTelefono.Text = telefonos[0].ToString();
+                    }
+
+                    if (telefonos[1] != null)
+                    {
+                        txtTelefono2.Text = telefonos[1].ToString();
                     }
                 }
 
-                
+
 
             }
 
@@ -81,12 +96,17 @@ namespace SIEI
             datosPersona[4] = chkDiscapacidad.Checked; //REVISAR
             datosPersona[5] = txtCorreo.Text;
 
-
-            Stream fs = fileUploadCurriculo.PostedFile.InputStream;
-            BinaryReader br = new BinaryReader(fs);
-            byte[] archivo = br.ReadBytes((Int32)fs.Length);
-
-            datosPersona[6] = archivo;
+            if (!lnkDownload.Text.Contains("pdf"))
+            {
+                Stream fs = fileUploadCurriculo.PostedFile.InputStream;
+                BinaryReader br = new BinaryReader(fs);
+                byte[] archivo = br.ReadBytes((Int32)fs.Length);
+                datosPersona[6] = archivo;
+            }
+            else {
+                datosPersona[6] = null;
+            }
+                
 
             if (controladoraPersonas.actualizarPersona(datosPersona))
             {
@@ -143,6 +163,21 @@ namespace SIEI
             actualizarPersona();
             actualizarContrasena();
             actualizarTelefonos();
+        }
+
+        /**/
+        protected void DownloadFile(object sender, EventArgs e)
+        {
+            //Response.Clear();
+            //Response.ContentType = "text/plain";
+            //Response.AppendHeader("Content-Disposition", "attachment; filename=" + "curriculo.pdf");
+            //Response.BinaryWrite(controladoraPersonas.obtenerCurriculoLoggeado());
+            //Response.Flush();
+            //Response.End();
+
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-length", controladoraPersonas.obtenerCurriculoLoggeado().Length.ToString());
+            Response.BinaryWrite(controladoraPersonas.obtenerCurriculoLoggeado());
         }
     }
 }
