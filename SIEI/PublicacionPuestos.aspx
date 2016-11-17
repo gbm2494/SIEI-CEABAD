@@ -33,6 +33,19 @@
                         </div>
                   </div>
             </div>
+
+            <div class = "row">
+                 <div class="form-group">
+                    <strong><asp:Label runat="server" ID="lblNombre" CssClass="col-md-2 control-label">Nombre:</asp:Label></strong>
+                        <div class="col-md-10">
+                            <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control" MaxLength="30"/>
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtNombre"
+                                CssClass="text-danger" ErrorMessage="Se requiere el nombre del puesto" />
+                        </div>
+                  </div>
+            </div>
+
+
             <div class ="row">
                  <div class="form-group">
                     <strong><asp:Label runat="server" ID="lblDescripcion" CssClass="col-md-2 control-label" >Descripción:</asp:Label></strong>
@@ -43,6 +56,16 @@
                         </div>
                   </div>
             </div>
+ 
+            <div class ="row">
+                 <div class="form-group">
+                    <strong><asp:Label runat="server" ID="lblAreaTrabajo" CssClass="col-md-2 control-label" >Area de trabajo:</asp:Label></strong>
+                        <div class="col-xs-6 col-sm-4">
+                            <asp:DropDownList runat="server" ID="DropDownList1" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="areaSeleccionada" EnableViewState="true"></asp:DropDownList>
+                        </div>
+                  </div>
+            </div>
+
 
             <div class ="row">
                  <div class="form-group">
@@ -76,14 +99,30 @@
                   </div>
             </div>
 
+            <br />
+
+
+            
+        <div class="row">
+            <div class="col-md-8 col-md-offset-4">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <asp:Button runat="server" OnClick="CreatePuesto_Click" Text="Crear puesto" CssClass="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+            <br />
+
             <div class="row">
-            <div class="col-sm-6 col-sm-offset-1">
+            <div class="col-xs-6 col-sm-4 col-sm-offset-3">
                 <div id="scroll" style="height: 183px; width: 700px; overflow: auto;">
-                    <asp:GridView ID="gridDisenos" runat="server" CssClass="dataGridTable" Style="width: 680px; text-align: center" Font-Size="14px" AutoGenerateColumns="true" OnRowCommand="gridPuestos_RowCommand" HeaderStyle-BackColor="#444444" HeaderStyle-ForeColor="White" AlternatingRowStyle-BackColor="#dddddd">
+                    <asp:GridView ID="gridDisenos" runat="server" CssClass="dataGridTable" Style="width: 980px; text-align: center" Font-Size="14px" AutoGenerateColumns="true" OnRowCommand="gridPuestos_RowCommand" HeaderStyle-BackColor="#444444" HeaderStyle-ForeColor="White" AlternatingRowStyle-BackColor="#dddddd">
                         <Columns>
                             <asp:TemplateField HeaderText="">
                                 <ItemTemplate>
-                                    <asp:LinkButton runat="server" ID="lnkConsulta" CommandName="seleccionarPuesto" CommandArgument='<%#Eval("ID Puesto") %>'> Consultar </asp:LinkButton>
+                                    <asp:LinkButton runat="server" ID="lnkConsulta" CommandName="seleccionarPuesto" CommandArgument='<%#Eval("Identificador") %>'> Consultar </asp:LinkButton>
 
                                 </ItemTemplate>
 

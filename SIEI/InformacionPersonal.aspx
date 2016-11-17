@@ -6,6 +6,9 @@
         <div class="form-horizontal col-md-6">
             <h1>Datos personales</h1>
             <hr />
+            <div id="check" runat="server" class="alert alert-success">
+                            <strong>Éxito!</strong> Sus datos fueron actualizados.
+                        </div>
             <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
             <script type="text/javascript">
@@ -21,13 +24,12 @@
                 removeHeader();
             </script>
 
+            
+
             <div class="form-group">
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="check" runat="server" class="alert alert-success" >
-                            <strong>Éxito!</strong> Sus datos fueron actualizados.
-                        </div>
                         <asp:Label runat="server" AssociatedControlID="txtIdentificacion" CssClass="col-md-3 control-label">Identificación:</asp:Label>
                         <div class="col-md-6">
                             <asp:TextBox runat="server" ID="txtIdentificacion" Enabled="false" CssClass="form-control" MaxLength="15" />
@@ -167,7 +169,7 @@
                 </div>
 
                 <div class="row" style="padding-top:1em">
-                    <div class="col-md-12" id="curriculo">
+                    <div class="col-md-12" style="display:none" id="curriculoCargado" runat="server">
                         <strong>
                             <asp:Label ID="Label1" runat="server" Text="Descargar currículo" CssClass="col-md-3 control-label"></asp:Label></strong>
                         <div class="col-md-6">
@@ -182,10 +184,6 @@
 
             </div>
 
-
-
-
-
             <div class="row">
                 <div class="col-md-12" style="float: right">
                     <div class=" col-md-9">
@@ -196,11 +194,7 @@
                     </div>
 
                 </div>
-            </div>
-
-            
-
-            
+            </div>      
 
         </div>
 

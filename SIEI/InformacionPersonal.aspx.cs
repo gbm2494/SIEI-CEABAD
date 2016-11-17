@@ -61,6 +61,7 @@ namespace SIEI
                     if (resultado[6] != null)
                     {
                         lnkDownload.Text = "curriculo.pdf";
+                        curriculoCargado.Style.Clear();
 
                     }
 
@@ -84,7 +85,7 @@ namespace SIEI
         }
 
         /**/
-        public void actualizarPersona()
+        public Boolean actualizarPersona()
         {
             //actualizar datos persona
             object[] datosPersona = new object[7];
@@ -106,18 +107,8 @@ namespace SIEI
             else {
                 datosPersona[6] = null;
             }
-                
 
-            if (controladoraPersonas.actualizarPersona(datosPersona))
-            {
-                check.Style.Clear();
-            }
-
-            //actualizar contraseña
-
-            
-
-            //actualizar telefonos
+            return controladoraPersonas.actualizarPersona(datosPersona);
         }
 
         /**/
@@ -160,9 +151,12 @@ namespace SIEI
         /**/
         protected void btnActualizar(object sender, EventArgs e)
         {
-            actualizarPersona();
-            actualizarContrasena();
             actualizarTelefonos();
+
+            if (actualizarPersona() == true && actualizarContrasena() == true)
+            {
+                check.Style.Clear();
+            }
         }
 
         /**/
@@ -177,7 +171,9 @@ namespace SIEI
 
             Response.ContentType = "application/pdf";
             Response.AddHeader("content-length", controladoraPersonas.obtenerCurriculoLoggeado().Length.ToString());
+            Response.AppendHeader("Content-Disposition", "attachment; filename=curriculo.pdf");
             Response.BinaryWrite(controladoraPersonas.obtenerCurriculoLoggeado());
+            
         }
     }
 }
