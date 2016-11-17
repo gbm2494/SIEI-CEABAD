@@ -41,5 +41,20 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
 
             return resultado;
         }
+
+
+
+        public List<Requerimiento> consultarRequerimientos(string idEempresa)
+        {
+            var id = bd.Empresa.Where(e => e.id == idEempresa).ToList().FirstOrDefault().identificacion;
+            var req = bd.Requerimiento.Where(r=>r.identificacionEmpresa.Equals(id));
+     
+            return req.ToList();
+        }
+
+
+
+
+
     }
 }

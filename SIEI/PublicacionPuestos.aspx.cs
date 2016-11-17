@@ -12,13 +12,15 @@ namespace SIEI
 {
     public partial class PublicacionPuestos : System.Web.UI.Page
     {
-
+        string userName;
         ControladoraEmpresas controladoraEmpresas = new ControladoraEmpresas();
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            string userName = HttpContext.Current.User.Identity.Name;
+            userName = HttpContext.Current.User.Identity.GetUserId();
+            llenarComboArea("222");
             llenarGrid(userName);
+            llenarListaReq();
         }
 
 
@@ -26,26 +28,44 @@ namespace SIEI
         {
             //Creo el objeto con los atributos necesarios para crear el nuevo puesto
 
-            
-            Object[] nuevaEmpresa = new Object[3];
+            var contador = listAsignados.Items.Count;
+            var contadorDos = 4;
+            contador = contador + 4;
+            Object[] nuevaEmpresa = new Object[contador];
             nuevaEmpresa[0] = txtIdentificacion.Text;
             nuevaEmpresa[1] = txtNombre.Text;
+            nuevaEmpresa[2] = txtDescripcion;
+            nuevaEmpresa[3] = comboAreaTrabajo.SelectedItem.ToString();
+            for (var i = 0; i < listAsignados.Items.Count; ++i)
+            {
+                nuevaEmpresa[contadorDos] = listAsignados.Items[i];
+            }
+
 
             
+        }
+
+        protected void llenarListaReq()
+        {
+            var req = controladoraEmpresas.consultarRequerimientos(userName);
+            foreach (var r in req)
+            {
+                listReqDisponibles.Items.Add(r.descripcion);
+            }
+
+
         }
 
 
         protected void llenarComboArea(string cedulaUsuario)
         {
             Object[] datos;
-
-
-/*
-            datos = new Object[1];
             datos[0] = "Seleccione";
+            datos[1] = "Front End Developer";
+            datos[2] = "Desarrollo móvil";
             this.comboAreaTrabajo.DataSource = datos;
             this.comboAreaTrabajo.DataBind();
-*/
+
 
 
         }
