@@ -67,36 +67,43 @@ namespace SIEI.Account
 
                         var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
 
-                        var usuarios = roleManager.FindByName(comboRol.Text).Users;
-
-                        var usuariosLista = usuarios.ToList();
-
-                        var user = manager.FindByName(Email.Text);
-
-                        Boolean existe = false;
-                        int i = 0;
-
-                        while (existe == false && usuarios.Count > i)
+                        if (comboRol.Text != "Seleccione")
                         {
-                            if (usuariosLista[i].UserId == user.Id)
+                            var usuarios = roleManager.FindByName(comboRol.Text).Users;
+
+                            var usuariosLista = usuarios.ToList();
+
+                            var user = manager.FindByName(Email.Text);
+
+                            Boolean existe = false;
+                            int i = 0;
+
+                            while (existe == false && usuarios.Count > i)
                             {
-                                existe = true;
+                                if (usuariosLista[i].UserId == user.Id)
+                                {
+                                    existe = true;
+                                }
+
+                                i++;
                             }
 
-                            i++;
-                        }
+                            if (existe == true)
+                            {
+                                Session["Role"] = comboRol.SelectedValue;
+                                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                            }
+                            else
+                            {
+                                //    FailureText.Text = "Intento de inicio de sesión inválido";
+                                errorPassword.Style.Clear();
+                                //   ErrorMessage.Visible = true;
 
-                        if (existe == true)
-                        {
-                            Session["Role"] = comboRol.SelectedValue;
-                            IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                            }
                         }
                         else
                         {
-                        //    FailureText.Text = "Intento de inicio de sesión inválido";
                             errorPassword.Style.Clear();
-                         //   ErrorMessage.Visible = true;
-
                         }
 
                         break;
