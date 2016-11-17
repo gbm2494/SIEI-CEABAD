@@ -14,15 +14,16 @@
 
     </div>
 
+
+
     <div class="row">
-        <div class="col-xs-6 col-sm-4 col-sm-offset-3">
-            <div id="scroll" style="height: 183px; width: 700px; overflow: auto;">
-                <asp:GridView ID="gridDisenos" runat="server" CssClass="dataGridTable" Style="width: 980px; text-align: center" Font-Size="14px" AutoGenerateColumns="true" OnRowCommand="gridPuestos_RowCommand" HeaderStyle-BackColor="#444444" HeaderStyle-ForeColor="White" AlternatingRowStyle-BackColor="#dddddd">
+        <div class="col-md-6 col-md-offset-3 " style ="">
+           <asp:GridView ID="gridDisenos" runat="server" CssClass="dataGridTable" Style="width: 980px; text-align: center" Font-Size="14px" AutoGenerateColumns="true" OnRowCommand="gridPuestos_RowCommand" HeaderStyle-BackColor="#444444" HeaderStyle-ForeColor="White" AlternatingRowStyle-BackColor="#dddddd">
                     <Columns>
                         <asp:TemplateField HeaderText="">
 
                             <ItemTemplate>
-                                <asp:LinkButton runat="server" ID="lnkConsulta" CommandName="seleccionarPuesto" CommandArgument='<%#Eval("Identificador") %>'> Consultar </asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="lnkConsulta" CommandName="seleccionarPuesto" CommandArgument='<%#Eval("Identificador") %>'> Contratar </asp:LinkButton>
                             </ItemTemplate>
 
                         </asp:TemplateField>
@@ -30,9 +31,10 @@
 
                     </Columns>
                 </asp:GridView>
-
-            </div>
+    </div>
         </div>
 
-    </div>
+
+
+    
 </asp:Content>

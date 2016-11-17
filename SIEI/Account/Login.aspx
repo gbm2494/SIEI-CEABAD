@@ -4,7 +4,7 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div class=" text-center">
-        <h2 style="padding-top: 1em"><%: Title %></h2>
+        <h2 style="padding-top: 0em"><%: Title %></h2>
         <p class="text-danger">
             <asp:Literal runat="server" ID="Literal1" Visible="false" />
         </p>
@@ -24,7 +24,7 @@
    -->
 
 
-    <div class="row">
+    <div class="row" style="padding-top: 2em">
 
         <div class="col-md-8 col-md-offset-2" style = "text-align:center;">
             <div id="errorPassword" runat="server" class="alert alert-danger" style = " display:none">
