@@ -155,7 +155,7 @@ namespace SIEI
 
             if (actualizarPersona() == true && actualizarContrasena() == true)
             {
-                check.Style.Clear();
+                //check.Style.Clear();
             }
         }
 

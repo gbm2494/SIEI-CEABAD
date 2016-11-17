@@ -10,20 +10,6 @@
         </p>
     </div>
 
-    <!--  <script type="text/javascript">
-
-            function removeHeader() {
-                document.getElementById("aNav").className =
-                    document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
-                document.getElementById("imgHeader").style.display = "none";
-                document.getElementById("regPers").style.fontSize = "1em";
-                document.getElementById("regEmp").style.fontSize = "1em";
-            }
-            removeHeader();
-        </script> 
-   -->
-
-
     <div class="row" style="padding-top: 2em">
 
         <div class="col-md-8 col-md-offset-2" style = "text-align:center;">

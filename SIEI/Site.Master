@@ -72,7 +72,7 @@
                             %>
 
                             <li><a id="regPers"  runat="server" href="~/InformacionPersonal">Datos personales</a></li>
-                            <li><a id="bscEmpleo" runat="server" href="~/BuscarEmpleo">Buscar empleo</a></li>
+                            <li><a id="bscEmpleo" runat="server" href="~/">Buscar empleo</a></li>
                             <li><a id="contServ" runat="server" href="~/ContratarServicios">Contratar servicios</a></li>
                             <li><a id="ofrecerServ" runat="server" href="~/OfrecerServicio">Ofrecer servicios</a></li>
 
@@ -83,10 +83,10 @@
                                     if (Session["Role"] != null && Session["Role"].ToString() == "Empresa")
                                     {
                             %>
-                            <li><a id="empDatos" runat="server" href="~/Empleo">Datos</a></li>
-                            <li><a id="solici" runat="server" href="~/Solicitudes">Solicitudes</a></li>
-                            <li><a id="personal" runat="server" href="~/Personal">Personal</a></li>
-                            <li><a id="ranking" runat="server" href="~/Ranking">Ranking</a></li>
+                            <li><a id="empDatos" runat="server" href="~/DatosEmpresa">Datos</a></li>
+                            <li><a id="solici" runat="server" href="~/">Solicitudes</a></li>
+                            <li><a id="personal" runat="server" href="~/">Personal</a></li>
+                            <li><a id="ranking" runat="server" href="~/">Ranking</a></li>
                             <li><a id="PuestoDis" runat="server" href="~/PublicacionPuestos">Puestos de trabajo</a></li>
                             <% 
                                 }

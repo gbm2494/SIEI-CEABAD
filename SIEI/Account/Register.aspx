@@ -14,10 +14,10 @@
     <div class="form-horizontal text-center">
         <h4>Crea tu cuenta</h4>
         <hr />
-        <asp:ValidationSummary runat="server" CssClass="text-danger" />
+        <%--<asp:ValidationSummary runat="server" CssClass="text-danger" />--%>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-3">
+            <div class="col-md-8 col-md-offset-2" style = "text-align:center;">
 
                 <div class="form-group">
                     <div id="error" runat="server" class="alert alert-danger" style="display: none">
@@ -29,6 +29,17 @@
                     <div id="check" runat="server" class="alert alert-success" style="display: none">
                         <strong>Éxito!</strong> La persona fue registrada en el sistema.
                     </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-3">
+                <div class="form-group">
                     <asp:Label runat="server" AssociatedControlID="txtIdentificacion" CssClass="col-md-2 control-label">Identificación:</asp:Label>
                     <div class="col-md-10">
                         <asp:TextBox runat="server" ID="txtIdentificacion" CssClass="form-control" MaxLength="15" />
@@ -38,8 +49,6 @@
                 </div>
             </div>
         </div>
-
-
 
         <div class="row">
             <div class="col-md-8 col-md-offset-3">

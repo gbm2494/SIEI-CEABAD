@@ -6,12 +6,11 @@
         <div class="form-horizontal col-md-6">
             <h1>Datos personales</h1>
             <hr />
-            <div id="check" runat="server" class="alert alert-success">
+            <%--<div id="check" runat="server" class="alert alert-success">
                             <strong>Éxito!</strong> Sus datos fueron actualizados.
-                        </div>
+                        </div>--%>
             <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
-          
             
 
             <div class="form-group">
@@ -99,7 +98,7 @@
 
             </div>
             <div class="form-horizontal col-md-6">
-                <h4>&nbsp;</h4>
+                <h4>&nbsp;</h4><h4>&nbsp;</h4>
                 <hr />
                 <asp:ValidationSummary runat="server" CssClass="text-danger" />
                 <div class="row">

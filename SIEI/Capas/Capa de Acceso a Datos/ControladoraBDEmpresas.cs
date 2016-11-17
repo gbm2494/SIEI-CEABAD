@@ -15,7 +15,9 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
         Entities bd = new Entities();
         ApplicationDbContext context = new ApplicationDbContext();
 
-        /*
+        /*Requiere: un objeto de tipo entidadEmpresa que va a ser insertado en la base de datos
+         * Modifica: inserta una nueva empresa a la blase
+         * Retorna: True si logro almacenar la empresa
          */
         public Boolean insertarEmpresa(EntidadEmpresa nueva)
         {
@@ -42,6 +44,11 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             return resultado;
         }
 
+
+        /*Requiere: una entidad puesto para almacearlo en la base de datos
+         * Modifica: no modifica datos
+         * Retorna: True si puede insertar la tupla, false si no
+         */
         public Boolean insertarPuesto(EntidadPuesto nueva)
         {
             Boolean resultado = false;
@@ -66,7 +73,10 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
         }
 
 
-
+        /*Requiere: identificacion de la empresa
+         * Modifica: no modifica datos
+         * Retorna: lista de requerimientos que puede tener una empresa
+         */
         public List<Requerimiento> consultarRequerimientos(string idEempresa)
         {
             var id = bd.Empresa.Where(e => e.id == idEempresa).ToList().FirstOrDefault().identificacion;
@@ -76,6 +86,10 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
         }
 
 
+        /*Requiere: no requiere datos
+         * Modifica: no modifica datos
+         * Retorna: lista de areas de trabajo que puede tener una empresa
+         */
         public List<Area_Trabajo> consultarAreaTrabajo()
         {
             var areas = from b in bd.Area_Trabajo select b;

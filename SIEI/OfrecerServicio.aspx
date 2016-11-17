@@ -12,7 +12,7 @@
 
              <div class="row">
         <div class="col-md-8 col-md-offset-2" style = "text-align:center;">
-            <div id="check" runat="server" class="alert alert-success" >
+            <div id="check" runat="server" class="alert alert-success" style="display:none" >
                 <strong>Éxito!</strong> Nuevo servicio insertado en el sistema
             </div>
 

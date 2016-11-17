@@ -19,7 +19,7 @@
                     de trabajos informales. En el caso de la empresa, este módulo le permite publicar los puestos vacantes, además, dar el mantenimiento a los mismos.
                 </p>
                 <p class ="btn-main">
-                    <a class="btn btn-primary " href="http://go.microsoft.com/fwlink/?LinkId=301949">Leer más &raquo;</a>
+                    <a class="btn btn-primary " href="http://go.microsoft.com/fwlink/?LinkId=301949">Ir a módulo &raquo;</a>
                 </p>
             </div>
             <div class="col-xs-6 col-sm-4 section">
@@ -28,7 +28,7 @@
                     Enlace a diferentes plataformas virtuales de educación para que las personas puedan capacitarse en algún área en específico, especialmente en el idioma pero también puede contener otros temas.
                 </p>
                 <p class ="btn-main">
-                    <a class="btn btn-primary " href="http://go.microsoft.com/fwlink/?LinkId=301949">Leer más &raquo;</a>
+                    <a class="btn btn-primary " href="http://go.microsoft.com/fwlink/?LinkId=301949">Ir a módulo &raquo;</a>
                 </p>
             </div>
             <div class="col-xs-6 col-sm-4  section">
@@ -37,7 +37,7 @@
                     En este caso se presenta información sobre cómo empezar un negocio, es decir, el proceso que se debe seguir para poder realizar la apertura y el enlace con las entidades que pueden hacer eso realidad con apoyo de algún tipo.
                 </p>
                 <p class ="btn-main">
-                    <a class="btn btn-primary " href="http://go.microsoft.com/fwlink/?LinkId=301950">Leer más &raquo;</a>
+                    <a class="btn btn-primary " href="http://go.microsoft.com/fwlink/?LinkId=301950">Ir a módulo &raquo;</a>
                 </p>
             </div>
         </div>
