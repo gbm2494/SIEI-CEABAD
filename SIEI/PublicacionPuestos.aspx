@@ -61,7 +61,7 @@
                  <div class="form-group">
                     <strong><asp:Label runat="server" ID="lblAreaTrabajo" CssClass="col-md-2 control-label" >Area de trabajo:</asp:Label></strong>
                         <div class="col-xs-6 col-sm-4">
-                            <asp:DropDownList runat="server" ID="DropDownList1" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="areaSeleccionada" EnableViewState="true"></asp:DropDownList>
+                            <asp:DropDownList runat="server" ID="comboAreaTrabajo" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="areaSeleccionada" EnableViewState="true"></asp:DropDownList>
                         </div>
                   </div>
             </div>

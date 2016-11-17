@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using SIEI.Capas.Capa_de_Acceso_a_Datos;
 using SIEI.Capas.Capa_Entidad;
+using SIEI.Models;
 
 namespace SIEI.Capas.Capa_Control
 {
@@ -20,5 +21,11 @@ namespace SIEI.Capas.Capa_Control
 
 
         }
+
+        public List<Requerimiento> consultarRequerimientos(string idEempresa)
+        {
+            return controladoraBDEmpresas.consultarRequerimientos(idEempresa);
+        }
+
     }
 }
