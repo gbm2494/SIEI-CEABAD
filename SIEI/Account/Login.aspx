@@ -25,6 +25,7 @@
 
 
     <div class="row">
+
         <div class="col-md-8 col-md-offset-2" style = "text-align:center;">
             <div id="errorPassword" runat="server" class="alert alert-danger" style = " display:none">
                 <strong>Error!</strong> Los datos no son correctos.
