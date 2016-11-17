@@ -122,6 +122,21 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
         }
 
         /**/
+        public object[] obtenerAreas(string identificacion)
+        {
+
+            List<Telefono_Persona> telefonos = bd.Telefono_Persona.Where(x => x.identificacion == identificacion).ToList();
+
+            object[] retorno = new object[2];
+
+            for (int i = 0; i < telefonos.Count; i++)
+            {
+                retorno[i] = telefonos.ElementAt(i).numero;
+            }
+
+            return retorno;
+        }
+
         public object[] obtenerTelefonos(string identificacion)
         {
 

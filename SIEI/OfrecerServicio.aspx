@@ -1,25 +1,14 @@
 ﻿<%@ Page Title="Ofrecer servicios" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OfrecerServicio.aspx.cs" Inherits="SIEI.OfrecerServicio" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 style="padding-top: 3em; text-align: center"><%: Title %> </h2>
+    <h2 style="padding-top: 0em; text-align: center"><%: Title %> </h2>
     <div class="row">
          <hr />
         <div class="form-horizontal col-md-8 col-md-offset-1">
            
             <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
-            <script type="text/javascript">
-                function removeHeader() {
-                    document.getElementById("aNav").className =
-                        document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
-                    document.getElementById("imgHeader").style.display = "none";
-                    document.getElementById("regPers").style.fontSize = "1em";
-                    document.getElementById("bscEmpleo").style.fontSize = "1em";
-                    document.getElementById("contServ").style.fontSize = "1em";
-                    document.getElementById("ofrecerServ").style.fontSize = "1em";
-                }
-                removeHeader();
-            </script>
+           
 
              <div class="row">
         <div class="col-md-8 col-md-offset-2" style = "text-align:center;">
