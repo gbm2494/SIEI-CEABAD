@@ -5,17 +5,40 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using SIEI.Capas.Capa_Control;
+
 namespace SIEI
 {
     public partial class contratarServicios : System.Web.UI.Page
     {
+
+        ControladoraPersonal controladoraPersonas = new ControladoraPersonal();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                llenarComboboxServicio();
+            }
 
             string userName = HttpContext.Current.User.Identity.Name;
             llenarGrid(userName);
 
         }
+
+        protected void llenarComboboxServicio()
+        {
+            List<string> servicios = controladoraPersonas.listaServicios();
+
+            DDLCriterio.Items.Add("Seleccione");
+
+
+            for (int i = 0; i < servicios.Count; i++)
+            {
+                DDLCriterio.Items.Add(servicios.ElementAt(i));
+            }
+        }
+
         private void llenarGrid(string nm) {
             DataTable dt = crearTablaPuestos();
             Object[] datos = new Object[4];
