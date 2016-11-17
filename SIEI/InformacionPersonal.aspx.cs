@@ -14,7 +14,6 @@ namespace SIEI
     public partial class WebForm1 : System.Web.UI.Page
     {
         ControladoraPersonal controladoraPersonas = new ControladoraPersonal();
-        byte[] curriculo;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -62,8 +61,8 @@ namespace SIEI
                     if (resultado[6] != null)
                     {
                         lnkDownload.Text = "curriculo.pdf";
+                        curriculoCargado.Style.Clear();
 
-                        curriculo = controladoraPersonas.obtenerCurriculoLoggeado();
                     }
 
                     object[] telefonos = controladoraPersonas.obtenerTelefonos(txtIdentificacion.Text);
@@ -86,7 +85,7 @@ namespace SIEI
         }
 
         /**/
-        public void actualizarPersona()
+        public Boolean actualizarPersona()
         {
             //actualizar datos persona
             object[] datosPersona = new object[7];
@@ -108,18 +107,8 @@ namespace SIEI
             else {
                 datosPersona[6] = null;
             }
-                
 
-            if (controladoraPersonas.actualizarPersona(datosPersona))
-            {
-                check.Style.Clear();
-            }
-
-            //actualizar contraseña
-
-            
-
-            //actualizar telefonos
+            return controladoraPersonas.actualizarPersona(datosPersona);
         }
 
         /**/
@@ -162,20 +151,29 @@ namespace SIEI
         /**/
         protected void btnActualizar(object sender, EventArgs e)
         {
-            actualizarPersona();
-            actualizarContrasena();
             actualizarTelefonos();
+
+            if (actualizarPersona() == true && actualizarContrasena() == true)
+            {
+                check.Style.Clear();
+            }
         }
 
         /**/
         protected void DownloadFile(object sender, EventArgs e)
         {
-            Response.Clear();
-            Response.ContentType = "text/plain";
-            Response.AppendHeader("Content-Disposition", "attachment; curriculo.pdf");
-            Response.BinaryWrite(curriculo);
-            Response.Flush();
-            Response.End();
+            //Response.Clear();
+            //Response.ContentType = "text/plain";
+            //Response.AppendHeader("Content-Disposition", "attachment; filename=" + "curriculo.pdf");
+            //Response.BinaryWrite(controladoraPersonas.obtenerCurriculoLoggeado());
+            //Response.Flush();
+            //Response.End();
+
+            Response.ContentType = "application/pdf";
+            Response.AddHeader("content-length", controladoraPersonas.obtenerCurriculoLoggeado().Length.ToString());
+            Response.AppendHeader("Content-Disposition", "attachment; filename=curriculo.pdf");
+            Response.BinaryWrite(controladoraPersonas.obtenerCurriculoLoggeado());
+            
         }
     }
 }
