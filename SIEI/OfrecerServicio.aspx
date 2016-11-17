@@ -3,8 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2 style="padding-top: 3em; text-align: center"><%: Title %> </h2>
     <div class="row">
+         <hr />
         <div class="form-horizontal col-md-8 col-md-offset-1">
-            <hr />
+           
             <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
             <script type="text/javascript">
