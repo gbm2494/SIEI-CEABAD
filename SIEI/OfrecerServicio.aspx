@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Ofrecer servicios" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="OfrecerServicio.aspx.cs" Inherits="SIEI.OfrecerServicio" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 style="padding-top: 3em; text-align:center"><%: Title %> </h2>
+    <h2 style="padding-top: 3em; text-align: center"><%: Title %> </h2>
     <div class="row">
         <div class="form-horizontal col-md-8 col-md-offset-1">
             <hr />
@@ -67,34 +67,42 @@
 
 
 
-             <div class="row">
+            <div class="row">
                 <div class="col-md-8 col-md-offset-3">
 
                     <div class="form-group">
                         <asp:Label runat="server" AssociatedControlID="FUImage" CssClass="col-md-2  control-label"> Imagen:</asp:Label>
                         <div class="col-md-10">
                             <asp:FileUpload ID="FUImage" runat="server" />
-                      
+
                         </div>
                     </div>
                 </div>
             </div>
 
-             <div class="row">
+            <div class="row">
                 <div class="col-md-8 col-md-offset-3">
 
                     <div class="form-group">
-                        
+
                         <div class="col-md-10">
 
                             <asp:Image ID="ImgUploaded" runat="server" />
-                      
+
                         </div>
                     </div>
                 </div>
             </div>
 
-
+            <div class="row">
+                <div class="col-md-12" style="float: right">
+                    <div class=" col-md-9">
+                        <div style="float: right">
+                            <asp:Button runat="server" Text="Postear" CssClass="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
