@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="InformacionPersonal.aspx.cs" Inherits="SIEI.WebForm1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 style="padding-top: 3em"><%: Title %> </h2>
+    <h2 style="padding-top: 0"><%: Title %> </h2>
     <div class="row">
         <div class="form-horizontal col-md-6">
             <h1>Datos personales</h1>
@@ -11,19 +11,7 @@
                         </div>
             <asp:ValidationSummary runat="server" CssClass="text-danger" />
 
-            <script type="text/javascript">
-                function removeHeader() {
-                    document.getElementById("aNav").className =
-                        document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
-                    document.getElementById("imgHeader").style.display = "none";
-                    document.getElementById("regPers").style.fontSize = "1em";
-                    document.getElementById("bscEmpleo").style.fontSize = "1em";
-                    document.getElementById("contServ").style.fontSize = "1em";
-                    document.getElementById("ofrecerServ").style.fontSize = "1em";
-                }
-                removeHeader();
-            </script>
-
+          
             
 
             <div class="form-group">

@@ -2,21 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2 style="padding: 3em 0 1em 0; text-align: center"><%: Title %> </h2>
+    <h2 style="text-align: center"><%: Title %> </h2>
     <asp:ValidationSummary runat="server" CssClass="text-danger" />
-
-    <script type="text/javascript">
-        function removeHeader() {
-            document.getElementById("aNav").className =
-                document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
-            document.getElementById("imgHeader").style.display = "none";
-            document.getElementById("regPers").style.fontSize = "1em";
-            document.getElementById("bscEmpleo").style.fontSize = "1em";
-            document.getElementById("contServ").style.fontSize = "1em";
-            document.getElementById("ofrecerServ").style.fontSize = "1em";
-        }
-        removeHeader();
-    </script>
     <div class="row">
         <div class="col-md-6 col-md-offset-3 box_finder">
             <asp:Label runat="server" AssociatedControlID="DDLCriterio" CssClass="col-md-5 col-md-offset-2 control-label"><span style="color:white">Criterio de busqueda</span></asp:Label>
@@ -26,11 +13,28 @@
         </div>
 
     </div>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3 box_finder">
 
-            <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
-           
-        </div>
+
+
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 " style ="">
+           <asp:GridView ID="gridDisenos" runat="server" CssClass="dataGridTable" Style="width: 980px; text-align: center" Font-Size="14px" AutoGenerateColumns="true" OnRowCommand="gridPuestos_RowCommand" HeaderStyle-BackColor="#444444" HeaderStyle-ForeColor="White" AlternatingRowStyle-BackColor="#dddddd">
+                    <Columns>
+                        <asp:TemplateField HeaderText="">
+
+                            <ItemTemplate>
+                                <asp:LinkButton runat="server" ID="lnkConsulta" CommandName="seleccionarPuesto" CommandArgument='<%#Eval("Identificador") %>'> Contratar </asp:LinkButton>
+                            </ItemTemplate>
+
+                        </asp:TemplateField>
+
+
+                    </Columns>
+                </asp:GridView>
     </div>
+        </div>
+
+
+
+    
 </asp:Content>

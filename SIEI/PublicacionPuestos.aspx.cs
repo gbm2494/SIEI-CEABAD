@@ -39,10 +39,13 @@ namespace SIEI
         {
             Object[] datos;
 
+
+/*
             datos = new Object[1];
             datos[0] = "Seleccione";
-           // this.comboAreaTrabajo.DataSource = datos;
-           // this.comboAreaTrabajo.DataBind();
+            this.comboAreaTrabajo.DataSource = datos;
+            this.comboAreaTrabajo.DataBind();
+*/
 
 
         }
