@@ -240,6 +240,7 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
       <LastGenOutput>Modelo.cs</LastGenOutput>
     </Content>
+    <Content Include="OfrecerServicio.aspx" />
     <Content Include="PublicacionPuestos.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -514,6 +515,13 @@
     </Compile>
     <Compile Include="Models\Ubicacion.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OfrecerServicio.aspx.cs">
+      <DependentUpon>OfrecerServicio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OfrecerServicio.aspx.designer.cs">
+      <DependentUpon>OfrecerServicio.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicacionPuestos.aspx.cs">
