@@ -35,6 +35,10 @@ namespace SIEI.Capas.Capa_Control
             return controladoraBDPersonas.obtenerDatosPersonaLoggeada();
         }
 
+        public byte[] obtenerCurriculoLoggeado()
+        {
+            return controladoraBDPersonas.obtenerCurriculoLoggeado();
+        }
         /**/
         public Boolean actualizarContrasena(string password)
         {
@@ -53,6 +57,12 @@ namespace SIEI.Capas.Capa_Control
         {
             EntidadTelefono_Persona nuevo = new EntidadTelefono_Persona(datos);
             return controladoraBDPersonas.guardarTelefonoUsuarioLogueado(nuevo);
+        }
+
+        /**/
+        public object[] obtenerTelefonos(string identificacion)
+        {
+            return controladoraBDPersonas.obtenerTelefonos(identificacion);
         }
 
     }

@@ -158,7 +158,20 @@
                         <strong>
                             <asp:Label ID="fileUpload" runat="server" Text="Cargar curriculum" CssClass="col-md-3 control-label"></asp:Label></strong>
                         <div class="col-md-6">
-                            <asp:FileUpload ID="fileUploadCurriculo" runat="server" />
+                            <asp:FileUpload ID="fileUploadCurriculo" runat="server" accept=".pdf"/>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row" style="padding-top:1em">
+                    <div class="col-md-12" id="curriculo">
+                        <strong>
+                            <asp:Label ID="Label1" runat="server" Text="Descargar currículo" CssClass="col-md-3 control-label"></asp:Label></strong>
+                        <div class="col-md-6">
+                            <asp:LinkButton ID="lnkDownload" runat="server" Text="Descargar" OnClick="DownloadFile"></asp:LinkButton>
 
                         </div>
                     </div>
@@ -184,6 +197,10 @@
 
                 </div>
             </div>
+
+            
+
+            
 
         </div>
 

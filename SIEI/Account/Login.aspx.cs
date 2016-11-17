@@ -93,8 +93,9 @@ namespace SIEI.Account
                         }
                         else
                         {
-                            FailureText.Text = "Intento de inicio de sesión inválido";
-                            ErrorMessage.Visible = true;
+                        //    FailureText.Text = "Intento de inicio de sesión inválido";
+                            errorPassword.Style.Clear();
+                         //   ErrorMessage.Visible = true;
 
                         }
 
@@ -111,9 +112,9 @@ namespace SIEI.Account
                         break;
                     case SignInStatus.Failure:
                     default:
-                        FailureText.Text = "Intento de inicio de sesión inválido";
-                        ErrorMessage.Visible = true;
-                        
+                      //  FailureText.Text = "Intento de inicio de sesión inválido";
+                        //ErrorMessage.Visible = true;
+                        errorPassword.Style.Clear();
                         break;
                 }
             }
