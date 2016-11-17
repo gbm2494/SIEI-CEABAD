@@ -11,7 +11,8 @@ namespace SIEI.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using SIEI.Capas.Capa_Entidad;
+
     public partial class Puesto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,7 +28,16 @@ namespace SIEI.Models
         public string descripcion { get; set; }
         public string ubicacionPuesto { get; set; }
         public Nullable<int> idArea { get; set; }
-    
+
+        public Puesto(EntidadPuesto nuevoPuesto)
+        {
+            identificacion = nuevoPuesto.getIdentificacion;
+            nombre = nuevoPuesto.getNombre;
+            descripcion = nuevoPuesto.getDescripcion;
+            ubicacionPuesto = nuevoPuesto.getUbicacionPuesto;
+            idArea = nuevoPuesto.getIdArea;
+        }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Aplica> Aplica { get; set; }
         public virtual Area_Trabajo Area_Trabajo { get; set; }

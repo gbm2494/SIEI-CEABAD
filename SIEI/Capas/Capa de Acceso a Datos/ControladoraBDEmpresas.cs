@@ -42,6 +42,29 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             return resultado;
         }
 
+        public Boolean insertarPuesto(EntidadPuesto nueva)
+        {
+            Boolean resultado = false;
+
+            Puesto nuevoPuesto = new Puesto(nueva);
+
+            try
+            {
+                
+
+                bd.Puesto.Add(nuevoPuesto);
+                bd.SaveChanges();
+
+                resultado = true;
+            }
+            catch (Exception e)
+            {
+                resultado = false;
+            }
+
+            return resultado;
+        }
+
 
 
         public List<Requerimiento> consultarRequerimientos(string idEempresa)
@@ -52,6 +75,12 @@ namespace SIEI.Capas.Capa_de_Acceso_a_Datos
             return req.ToList();
         }
 
+
+        public List<Area_Trabajo> consultarAreaTrabajo()
+        {
+            var areas = from b in bd.Area_Trabajo select b;
+            return areas.ToList();
+        }
 
 
 

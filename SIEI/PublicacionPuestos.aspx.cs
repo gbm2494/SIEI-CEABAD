@@ -13,6 +13,7 @@ namespace SIEI
     public partial class PublicacionPuestos : System.Web.UI.Page
     {
         string userName;
+        Dictionary<string, int> dic_area = new Dictionary<string, int>();
         ControladoraEmpresas controladoraEmpresas = new ControladoraEmpresas();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -31,17 +32,15 @@ namespace SIEI
             var contador = listAsignados.Items.Count;
             var contadorDos = 4;
             contador = contador + 4;
-            Object[] nuevaEmpresa = new Object[contador];
-            nuevaEmpresa[0] = txtIdentificacion.Text;
-            nuevaEmpresa[1] = txtNombre.Text;
-            nuevaEmpresa[2] = txtDescripcion;
-            nuevaEmpresa[3] = comboAreaTrabajo.SelectedItem.ToString();
-            for (var i = 0; i < listAsignados.Items.Count; ++i)
-            {
-                nuevaEmpresa[contadorDos] = listAsignados.Items[i];
-            }
+            Object[] nuevoPuesto = new Object[contador];
+            nuevoPuesto[0] = txtIdentificacion.Text;
+            nuevoPuesto[1] = txtNombre.Text;
+            nuevoPuesto[2] = txtDescripcion;
+            nuevoPuesto[3] = "San Pedro";
+            nuevoPuesto[4] = dic_area[comboAreaTrabajo.SelectedItem.ToString()];
 
-
+            controladoraEmpresas.insertarPuesto(nuevoPuesto);
+            
             
         }
 
@@ -59,10 +58,31 @@ namespace SIEI
 
         protected void llenarComboArea(string cedulaUsuario)
         {
-            Object[] datos;
+
+
+            /*
+            var areas = controladoraEmpresas.consultarAreaTrabajo();
+            
+            if (areas.Count > 0)
+            {
+                Object[] datos = new Object[areas.Count+1];
+                for (int i = 0; i < areas.Count; ++i)
+                {
+                    datos[i + 1] = areas[i].nombre;
+                    dic_area.Add(areas[i].nombre, areas[i].id);
+                }
+                this.comboAreaTrabajo.DataSource = datos;
+                this.comboAreaTrabajo.DataBind();
+            }
+            else
+            {
+                Object[] datos = new Object[1];
+                datos[0] = "Seleccione";
+                this.comboAreaTrabajo.DataSource = datos;
+                this.comboAreaTrabajo.DataBind();
+            }*/
+            Object[] datos = new Object[1];
             datos[0] = "Seleccione";
-            datos[1] = "Front End Developer";
-            datos[2] = "Desarrollo móvil";
             this.comboAreaTrabajo.DataSource = datos;
             this.comboAreaTrabajo.DataBind();
 

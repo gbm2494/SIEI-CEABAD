@@ -27,5 +27,16 @@ namespace SIEI.Capas.Capa_Control
             return controladoraBDEmpresas.consultarRequerimientos(idEempresa);
         }
 
+        public List<Area_Trabajo> consultarAreaTrabajo()
+        {
+            return controladoraBDEmpresas.consultarAreaTrabajo();
+        }
+
+        public void insertarPuesto(object[] nueva)
+        {
+            EntidadPuesto nuevoPuesto = new EntidadPuesto(nueva);
+            Boolean resultado = controladoraBDEmpresas.insertarPuesto(nuevoPuesto);
+        }
+
     }
 }
