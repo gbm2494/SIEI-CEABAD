@@ -25,7 +25,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div id="check" runat="server" class="alert alert-success" style="display: none">
+                        <div id="check" runat="server" class="alert alert-success" >
                             <strong>Éxito!</strong> Sus datos fueron actualizados.
                         </div>
                         <asp:Label runat="server" AssociatedControlID="txtIdentificacion" CssClass="col-md-3 control-label">Identificación:</asp:Label>

@@ -58,7 +58,7 @@ namespace SIEI
                     //hay curriculo cargado
                     if (resultado[6] != null)
                     {
-                        fileUploadCurriculo.fi
+                     
                     }
                 }
 
