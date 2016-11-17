@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SIEI {
-    
-    
-    public partial class PublicacionPuestos {
-        
+namespace SIEI
+{
+
+
+    public partial class PublicacionPuestos
+    {
+
         /// <summary>
         /// ErrorMessage control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ErrorMessage;
-        
+
         /// <summary>
         /// lblIdentificacion control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblIdentificacion;
-        
+
         /// <summary>
         /// txtIdentificacion control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtIdentificacion;
-        
+
         /// <summary>
         /// lblDescripcion control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDescripcion;
-        
+
         /// <summary>
         /// txtDescripcion control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtDescripcion;
-        
+
         /// <summary>
         /// lblRequerimientos control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblRequerimientos;
-        
+
         /// <summary>
         /// Red_Disponibles control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel Red_Disponibles;
-        
+
         /// <summary>
         /// listReqDisponibles control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox listReqDisponibles;
-        
+
         /// <summary>
         /// btnLogIn control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnLogIn;
-        
+
         /// <summary>
         /// btnLogOut control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnLogOut;
-        
+
         /// <summary>
         /// Req_asignados control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel Req_asignados;
-        
+
         /// <summary>
         /// listAsignados control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace SIEI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox listAsignados;
-        
+
         /// <summary>
         /// gridDisenos control.
         /// </summary>
