@@ -13,5 +13,26 @@ namespace SIEI
         {
 
         }
+
+        protected void gridPuestos_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "seleccionarPuesto")
+            {
+                LinkButton lnkConsulta = (LinkButton)e.CommandSource;
+                string idPuestoConsultado = lnkConsulta.CommandArgument;
+
+                if (idPuestoConsultado.Equals("-") == false)
+                {
+
+                    Session["idPuestoConsultado"] = idPuestoConsultado;
+
+
+                }
+
+
+                //listMiembrosDisponibles.Items.Clear();
+            }
+
+        }
     }
 }

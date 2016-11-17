@@ -2,7 +2,7 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
     <div class=" text-center">
-        <h2 style="padding-top: 3em"><%: Title %></h2>
+        <h2 style="padding-top: 0em"><%: Title %></h2>
         <p class="text-danger">
             <asp:Literal runat="server" ID="Literal1" Visible="false" />
         </p>
@@ -10,17 +10,7 @@
     <p class="text-danger">
         <asp:Literal runat="server" ID="ErrorMessage" Visible="false" />
     </p>
-    <script type="text/javascript">
-        function removeHeader() {
-            document.getElementById("aNav").className =
-                document.getElementById("aNav").className.replace(/\bmyNav\b/, '');
-            document.getElementById("imgHeader").style.display = "none";
-            document.getElementById("regPers").style.fontSize = "1em";
-            document.getElementById("regEmp").style.fontSize = "1em";
-        }
-        removeHeader();
-    </script>
-
+  
 
     <div class="form-horizontal text-center">
         <h4>Crea tu cuenta</h4>
